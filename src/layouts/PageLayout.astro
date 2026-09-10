@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  seoTitle?: string;
+  description?: string;
+  heroImage?: ImageMetadata;
+  heroImageAlt?: string;
+}
+
+const { title, seoTitle, description, heroImage, heroImageAlt } = Astro.props;
+---
+
+<BaseLayout title={seoTitle ?? title} description={description} rawTitle={Boolean(seoTitle)}>
+  <section class="hero">
+    {
+      heroImage && (
+        <Image
+          src={heroImage}
+          alt={heroImageAlt ?? title}
+          width={1600}
+          height={640}
+          class="hero-img"
+        />
+      )
+    }
+    <div class="container">
+      <h1>{title}</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <slot />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--color-primary);
+    color: #fff;
+    padding-block: 3rem;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    color: #fff;
+    margin: 0;
+  }
+</style>

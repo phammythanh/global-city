@@ -1,0 +1,172 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { formatPhone } from '../utils/format';
+
+const nav = [
+  { href: '/', label: 'Tổng quan' },
+  { href: '/vi-tri', label: 'Vị trí' },
+  { href: '/thap-tang', label: 'Thấp tầng' },
+  { href: '/cao-tang', label: 'Cao tầng' },
+  { href: '/tin-tuc', label: 'Tin tức' },
+  { href: '/lien-he', label: 'Liên hệ' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+interface Props {
+  phone: string;
+}
+
+const { phone } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="logo">
+      <Image src={logo} alt="Global City" width={160} height={115} />
+    </a>
+
+    <nav class="nav" aria-label="Menu chính">
+      <ul>
+        {
+          nav.map((item) => {
+            const isActive =
+              currentPath === item.href.replace(/\/$/, '') ||
+              (item.href !== '/' && currentPath.startsWith(item.href));
+            return (
+              <li>
+                <a href={item.href} aria-current={isActive ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <a class="btn btn-primary phone" href={`tel:${phone}`}>
+      Gọi {formatPhone(phone)}
+    </a>
+
+    <button class="burger" type="button" aria-label="Mở menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.nav');
+  burger?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--color-bg);
+    border-bottom: 1px solid rgba(74, 63, 48, 0.15);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block: 0.9rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+  }
+
+  .logo :global(img) {
+    height: 52px;
+    width: auto;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--color-text);
+    padding-block: 0.25rem;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav a:hover,
+  .nav a[aria-current='page'] {
+    color: var(--color-primary-dark);
+    border-color: var(--color-accent);
+  }
+
+  .phone {
+    white-space: nowrap;
+  }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .burger span {
+    width: 22px;
+    height: 2px;
+    background: var(--color-primary-dark);
+  }
+
+  @media (max-width: 860px) {
+    .nav {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      background: var(--color-bg);
+      border-bottom: 1px solid rgba(74, 63, 48, 0.15);
+      display: none;
+    }
+
+    .nav.open {
+      display: block;
+    }
+
+    .nav ul {
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem 1.25rem 1rem;
+    }
+
+    .nav a {
+      display: block;
+      padding-block: 0.6rem;
+    }
+
+    .phone {
+      display: none;
+    }
+
+    .burger {
+      display: flex;
+    }
+  }
+</style>

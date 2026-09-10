@@ -1,0 +1,21 @@
+# build
+dist/
+.astro/
+.wrangler/
+
+# dependencies
+node_modules/
+
+# env
+.env
+.env.production
+
+# generated
+public/og/
+public/favicon.png
+
+# editor / os
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.claude/

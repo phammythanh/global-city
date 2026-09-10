@@ -1,0 +1,265 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface GalleryItem {
+  image: ImageMetadata;
+  caption?: string;
+}
+
+interface Props {
+  items: GalleryItem[];
+  /** "grid" (default) shows small thumbnails in a grid; "stacked" shows
+   * each image full-width, one below another. */
+  layout?: 'grid' | 'stacked';
+}
+
+const { items, layout = 'grid' } = Astro.props;
+
+const fullImages = await Promise.all(
+  items.map((item) => getImage({ src: item.image, width: 1800, format: 'webp' }))
+);
+
+// A page can render several FloorPlanGallery instances (one per tab/group).
+// Each needs its own lightbox - a shared id would make every instance's
+// buttons control just the first lightbox on the page, which breaks (or
+// hides, if that first instance's tab isn't active) all the others.
+const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
+---
+
+<div class:list={['floorplan-gallery', layout === 'stacked' && 'is-stacked']} data-gallery-root={uid}>
+  {
+    items.map((item, i) => (
+      <button
+        type="button"
+        class="gallery-item"
+        data-index={i}
+        data-full={fullImages[i].src}
+        data-caption={item.caption ?? ''}
+      >
+        {layout === 'stacked' ? (
+          <Image src={item.image} alt={item.caption ?? ''} width={1600} height={1000} />
+        ) : (
+          <Image src={item.image} alt={item.caption ?? ''} width={480} height={270} />
+        )}
+        {item.caption && <span class="caption">{item.caption}</span>}
+      </button>
+    ))
+  }
+</div>
+
+<div class="lightbox" data-lightbox-for={uid} hidden>
+  <button type="button" class="lightbox-btn lightbox-close" aria-label="Đóng">&times;</button>
+  <button type="button" class="lightbox-btn lightbox-prev" aria-label="Ảnh trước">&#8249;</button>
+  <button type="button" class="lightbox-btn lightbox-next" aria-label="Ảnh sau">&#8250;</button>
+  <div class="lightbox-viewport">
+    <img class="lightbox-img" src="" alt="" />
+  </div>
+  <p class="lightbox-caption"></p>
+  <p class="lightbox-hint">Bấm vào ảnh để phóng to / thu nhỏ</p>
+</div>
+
+<script>
+  // Astro hoists identical inline scripts into one shared module, so this
+  // runs once for the whole page - it must set up every gallery/lightbox
+  // pair found, each with its own independent state.
+  document.querySelectorAll<HTMLElement>('.floorplan-gallery[data-gallery-root]').forEach((root) => {
+    const uid = root.dataset.galleryRoot;
+    const lightbox = document.querySelector<HTMLElement>(`[data-lightbox-for="${uid}"]`);
+    if (!lightbox) return;
+
+    const items = Array.from(root.querySelectorAll<HTMLButtonElement>('.gallery-item'));
+    const img = lightbox.querySelector<HTMLImageElement>('.lightbox-img');
+    const captionEl = lightbox.querySelector<HTMLElement>('.lightbox-caption');
+    let currentIndex = 0;
+
+    function show(index: number) {
+      const target = items[index];
+      if (!target || !img || !captionEl) return;
+      currentIndex = index;
+      img.src = target.dataset.full ?? '';
+      img.alt = target.dataset.caption ?? '';
+      img.classList.remove('zoomed');
+      captionEl.textContent = target.dataset.caption ?? '';
+      lightbox.hidden = false;
+    }
+
+    function close() {
+      lightbox.hidden = true;
+    }
+
+    function step(delta: number) {
+      show((currentIndex + delta + items.length) % items.length);
+    }
+
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => show(i));
+    });
+
+    lightbox.querySelector('.lightbox-close')?.addEventListener('click', close);
+    lightbox.querySelector('.lightbox-prev')?.addEventListener('click', () => step(-1));
+    lightbox.querySelector('.lightbox-next')?.addEventListener('click', () => step(1));
+    img?.addEventListener('click', () => img.classList.toggle('zoomed'));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+  });
+</script>
+
+<style>
+  .floorplan-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .floorplan-gallery.is-stacked {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid rgba(74, 63, 48, 0.15);
+    border-radius: var(--radius);
+    padding: 0.5rem;
+    cursor: zoom-in;
+    text-align: left;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 63, 48, 0.12);
+  }
+
+  .gallery-item :global(img) {
+    border-radius: calc(var(--radius) - 4px);
+  }
+
+  .caption {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-primary-dark);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(20, 17, 12, 0.94);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  /* `hidden` and an explicit `display` from the same specificity tier
+     conflict - only show the flex layout when NOT hidden. */
+  .lightbox:not([hidden]) {
+    display: flex;
+  }
+
+  .lightbox-viewport {
+    max-width: 100%;
+    max-height: 78vh;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 78vh;
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+    transform-origin: center;
+  }
+
+  .lightbox-img.zoomed {
+    max-width: none;
+    max-height: none;
+    width: 200%;
+    cursor: zoom-out;
+  }
+
+  .lightbox-caption {
+    color: #f0ece4;
+    margin: 1rem 0 0;
+    font-family: var(--font-heading);
+    text-align: center;
+  }
+
+  .lightbox-hint {
+    color: #b9ac9a;
+    font-size: 0.8rem;
+    margin: 0.35rem 0 0;
+  }
+
+  .lightbox-btn {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .lightbox-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .lightbox-close {
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.75rem;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    font-size: 2rem;
+  }
+
+  .lightbox-prev {
+    left: 1.25rem;
+  }
+
+  .lightbox-next {
+    right: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .lightbox {
+      padding: 1rem;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+  }
+</style>

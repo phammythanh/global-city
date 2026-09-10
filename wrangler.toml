@@ -1,0 +1,20 @@
+# Cloudflare Pages' dashboard Git integration DOES read this file during
+# builds and rejects unsupported keys (e.g. account_id, which Pages infers
+# from the project itself). Keep this minimal - it's also enough for
+# `wrangler pages deploy` from the CLI if you ever need that.
+name = "global-city"
+compatibility_date = "2026-09-06"
+pages_build_output_dir = "dist"
+
+# Stores contact-form submissions from functions/api/lien-he.ts.
+# TODO: create the namespace and paste its id here:
+#   npx wrangler kv namespace create LIEN_HE_LEADS
+[[kv_namespaces]]
+binding = "LIEN_HE_LEADS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# NOTE: a "send_email" binding for lead-notification emails can NOT go here -
+# Cloudflare Pages' config-file validation rejects it outright
+# ("Configuration file for Pages projects does not support 'send_email'").
+# Add it instead via the Pages dashboard: Settings > Functions > Email
+# bindings, binding name SEND_MAIL, destination thanhpham.era@gmail.com.

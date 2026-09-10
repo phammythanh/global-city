@@ -1,0 +1,145 @@
+backend:
+  name: github
+  repo: phammythanh/globalcity
+  branch: main
+  # OAuth worker deployed from cms-oauth-worker/ (see its README.md).
+  base_url: https://globalcity-cms-auth.thanhpham-era.workers.dev
+  auth_endpoint: auth
+
+site_url: https://globalcity.batdongsansinhloi.com
+display_url: https://globalcity.batdongsansinhloi.com
+logo_url: /favicon.png
+
+locale: "vi"
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Cấu hình chung"
+    editor:
+      preview: false
+    files:
+      - file: "src/content/settings/site.yml"
+        label: "Thông tin liên hệ & SEO"
+        name: "site"
+        fields:
+          # Nested under one "site" object field so the file is written as
+          # `site: {...}` - see src/content/config.ts for why.
+          - label: "Thông tin chung"
+            name: "site"
+            widget: "object"
+            fields:
+              - { label: "Tên dự án", name: "site_name", widget: "string" }
+              - { label: "Khẩu hiệu", name: "tagline", widget: "string", required: false }
+              - { label: "Số điện thoại", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Địa chỉ", name: "address", widget: "string", required: false }
+              - { label: "Link Zalo", name: "zalo_link", widget: "string", required: false }
+              - { label: "Link Facebook", name: "facebook_link", widget: "string", required: false }
+              - { label: "Link YouTube", name: "youtube_link", widget: "string", required: false }
+              - { label: "Link Website chính", name: "website_link", widget: "string", required: false }
+              - label: "Mô tả SEO mặc định"
+                name: "default_seo_description"
+                widget: "text"
+                hint: "Tối đa 160 ký tự, dùng khi trang không khai báo riêng."
+
+  - name: "pages"
+    label: "Trang nội dung"
+    files:
+      - file: "src/content/pages/tong-quan.md"
+        label: "Tổng quan"
+        name: "tong-quan"
+        fields: &page_fields
+          - { label: "Tiêu đề", name: "title", widget: "string" }
+          - label: "SEO Title (thẻ tiêu đề trên tab trình duyệt/Google)"
+            name: "seo_title"
+            widget: "string"
+            required: false
+            hint: "Để trống sẽ dùng \"Tiêu đề\" ở trên, thêm \" | Global City\"."
+          - { label: "Mô tả SEO", name: "seo_description", widget: "text", required: false, hint: "Tối đa khoảng 200 ký tự." }
+          - label: "Ảnh nền đầu trang"
+            name: "hero_image"
+            widget: "image"
+            required: false
+            media_folder: "images/{{slug}}"
+            public_folder: "images/{{slug}}"
+          - { label: "Mô tả ảnh (alt)", name: "hero_image_alt", widget: "string", required: false }
+          - label: "Video giới thiệu (nếu có, sẽ ưu tiên hiển thị thay ảnh nền)"
+            name: "intro_video"
+            widget: "file"
+            required: false
+            media_folder: "public/videos"
+            public_folder: "/videos"
+          - { label: "Nội dung", name: "body", widget: "markdown" }
+      - file: "src/content/pages/vi-tri.md"
+        label: "Vị trí"
+        name: "vi-tri"
+        fields: *page_fields
+      - file: "src/content/pages/thap-tang.md"
+        label: "Thấp tầng"
+        name: "thap-tang"
+        fields: &low_high_rise_fields
+          - { label: "Tiêu đề", name: "title", widget: "string" }
+          - label: "SEO Title"
+            name: "seo_title"
+            widget: "string"
+            required: false
+            hint: "Để trống sẽ dùng \"Tiêu đề\" ở trên, thêm \" | Global City\"."
+          - { label: "Mô tả SEO", name: "seo_description", widget: "text", required: false }
+          - label: "Ảnh nền đầu trang"
+            name: "hero_image"
+            widget: "image"
+            required: false
+            media_folder: "images/{{slug}}"
+            public_folder: "images/{{slug}}"
+          - { label: "Mô tả ảnh (alt)", name: "hero_image_alt", widget: "string", required: false }
+          - { label: "Nội dung", name: "body", widget: "markdown" }
+          - label: "Nhóm hình ảnh (theo phân khu / block)"
+            name: "gallery_groups"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Tên nhóm (VD: Soho, Sola...)", name: "label", widget: "string" }
+              - label: "Ảnh trong nhóm"
+                name: "items"
+                widget: "list"
+                fields:
+                  - label: "Ảnh"
+                    name: "image"
+                    widget: "image"
+                    media_folder: "images/{{slug}}"
+                    public_folder: "images/{{slug}}"
+                  - { label: "Chú thích", name: "caption", widget: "string", required: false }
+      - file: "src/content/pages/cao-tang.md"
+        label: "Cao tầng"
+        name: "cao-tang"
+        fields: *low_high_rise_fields
+      - file: "src/content/pages/lien-he.md"
+        label: "Liên hệ"
+        name: "lien-he"
+        fields: *page_fields
+
+  - name: "news"
+    label: "Tin tức"
+    folder: "src/content/news"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tiêu đề", name: "title", widget: "string" }
+      - { label: "Ngày đăng", name: "date", widget: "datetime" }
+      - label: "Mô tả ngắn"
+        name: "excerpt"
+        widget: "text"
+        hint: "Tối đa 200 ký tự, hiển thị ở trang danh sách và chia sẻ mạng xã hội."
+      - label: "Ảnh bìa"
+        name: "cover"
+        widget: "image"
+        required: false
+        media_folder: "images/{{slug}}"
+        public_folder: "images/{{slug}}"
+        hint: "Ảnh bìa cần lưu cùng thư mục bài viết (không dùng thư mục upload chung) để website build được - hệ thống tự xử lý khi bạn chọn ảnh ở đây."
+      - { label: "Mô tả ảnh bìa (alt)", name: "cover_alt", widget: "string", required: false }
+      - { label: "Ẩn bài viết", name: "draft", widget: "boolean", default: false }
+      - { label: "Nội dung", name: "body", widget: "markdown" }

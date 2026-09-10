@@ -1,0 +1,134 @@
+---
+// Site-wide click-to-zoom: any <img> inside <main> that isn't already
+// covered by its own lightbox (FloorPlanGallery) and isn't purely a link
+// thumbnail (an <img> inside <a>, e.g. news cards, logo) opens full-size
+// here on click. One instance is included once in BaseLayout.
+---
+
+<div class="global-lightbox" id="global-lightbox" hidden>
+  <button type="button" class="global-lightbox-close" aria-label="Đóng">&times;</button>
+  <div class="global-lightbox-viewport">
+    <img class="global-lightbox-img" src="" alt="" />
+  </div>
+</div>
+
+<script>
+  const lightbox = document.getElementById('global-lightbox');
+  const img = lightbox?.querySelector<HTMLImageElement>('.global-lightbox-img');
+
+  function open(src: string, alt: string) {
+    if (!lightbox || !img) return;
+    img.src = src;
+    img.alt = alt;
+    img.classList.remove('zoomed');
+    lightbox.hidden = false;
+  }
+
+  function close() {
+    if (!lightbox) return;
+    lightbox.hidden = true;
+  }
+
+  function isEligible(el: HTMLImageElement): boolean {
+    // FloorPlanGallery has its own dedicated lightbox with prev/next -
+    // don't double up on those thumbnails.
+    if (el.closest('.floorplan-gallery') || el.closest('.global-lightbox')) return false;
+    // Images that are really just link thumbnails (news cards, logo)
+    // should keep navigating, not hijack the click into a zoom.
+    if (el.closest('a')) return false;
+    // The dimmed hero background image sits behind the page title, not
+    // meant to be viewed full-size on its own.
+    if (el.classList.contains('hero-img')) return false;
+    return true;
+  }
+
+  document.querySelectorAll<HTMLImageElement>('main img').forEach((el) => {
+    if (!isEligible(el)) return;
+    el.classList.add('zoomable-img');
+    el.addEventListener('click', () => open(el.currentSrc || el.src, el.alt));
+  });
+
+  lightbox?.querySelector('.global-lightbox-close')?.addEventListener('click', close);
+  img?.addEventListener('click', () => img.classList.toggle('zoomed'));
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || lightbox.hidden) return;
+    if (e.key === 'Escape') close();
+  });
+</script>
+
+<style>
+  :global(main img.zoomable-img) {
+    cursor: zoom-in;
+  }
+
+  .global-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(20, 17, 12, 0.94);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  /* `hidden` and an explicit `display` from the same specificity tier
+     conflict - only show the flex layout when NOT hidden. */
+  .global-lightbox:not([hidden]) {
+    display: flex;
+  }
+
+  .global-lightbox-viewport {
+    max-width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .global-lightbox-img {
+    max-width: 100%;
+    max-height: 90vh;
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+    transform-origin: center;
+  }
+
+  .global-lightbox-img.zoomed {
+    max-width: none;
+    max-height: none;
+    width: 200%;
+    cursor: zoom-out;
+  }
+
+  .global-lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1.75rem;
+  }
+
+  .global-lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 640px) {
+    .global-lightbox {
+      padding: 1rem;
+    }
+  }
+</style>

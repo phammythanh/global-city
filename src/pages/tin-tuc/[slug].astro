@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const ogImage = post.data.cover
+  ? (await getImage({ src: post.data.cover, width: 1200, height: 630 })).src
+  : undefined;
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  ogImage={ogImage}
+  ogType="article"
+>
+  <article class="section">
+    <div class="container prose">
+      <p class="date">{post.data.date.toLocaleDateString('vi-VN')}</p>
+      <h1>{post.data.title}</h1>
+      {post.data.cover && (
+        <Image
+          src={post.data.cover}
+          alt={post.data.cover_alt ?? post.data.title}
+          width={1200}
+          height={630}
+        />
+      )}
+      <Content />
+      <p><a href="/tin-tuc">← Quay lại Tin tức</a></p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .date {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+</style>

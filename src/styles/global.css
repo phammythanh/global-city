@@ -1,0 +1,213 @@
+/* "Cera Black" is a commercial font (not on Google Fonts) - self-host it by
+   dropping the purchased files into public/fonts/ as CeraPro-Black.woff2 /
+   .woff. Until those files exist the browser silently falls back to the
+   next name in --font-heading, so the build/dev server never breaks. */
+@font-face {
+  font-family: 'Cera Black';
+  src:
+    url('/fonts/CeraPro-Black.woff2') format('woff2'),
+    url('/fonts/CeraPro-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #b87018;
+  --color-primary-dark: #4a3f30;
+  --color-accent: #b88040;
+  --color-bg: #f0f0e8;
+  --color-surface: #ffffff;
+  --color-text: #4a3f30;
+  --color-text-muted: #8b7355;
+  --font-heading: 'Cera Black', 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
+  --container-width: 1180px;
+  --radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+  margin: 0 0 0.6em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section {
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* Half the usual top gap when a section sits right under the hero band. */
+.hero + .section {
+  padding-top: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.6em;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #9a6a34;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.prose {
+  max-width: 72ch;
+}
+
+.prose h2 {
+  margin-top: 1.4em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+
+.prose p {
+  text-align: justify;
+}
+
+.prose table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid rgba(74, 63, 48, 0.2);
+  padding: 0.65em 1em;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  background: rgba(74, 63, 48, 0.08);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  white-space: nowrap;
+}
+
+.prose tbody tr:nth-child(even) {
+  background: rgba(74, 63, 48, 0.04);
+}
+
+.tabs {
+  margin-top: 2.5rem;
+}
+
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.75rem;
+  position: sticky;
+  /* Sits just under the sticky site header (~87px tall) so it stays
+     visible while scrolling through a tab's content. */
+  top: 87px;
+  z-index: 20;
+  background: var(--color-bg);
+  padding-block: 0.75rem;
+}
+
+.tab-btn {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--color-surface);
+  border: 1px solid rgba(74, 63, 48, 0.2);
+  border-radius: 999px;
+  padding: 0.65rem 1.4rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.tab-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-primary-dark);
+}
+
+.tab-btn.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}

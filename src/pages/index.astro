@@ -1,0 +1,65 @@
+---
+import { getEntry, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import PageLayout from '../layouts/PageLayout.astro';
+
+const entry = await getEntry('pages', 'tong-quan');
+if (!entry) throw new Error('Missing content/pages/tong-quan.md');
+const { Content } = await render(entry);
+---
+
+<PageLayout
+  title={entry.data.title}
+  seoTitle={entry.data.seo_title}
+  description={entry.data.seo_description}
+>
+  <Content />
+
+  {
+    entry.data.intro_video ? (
+      <video
+        class="overview-video"
+        src={entry.data.intro_video}
+        controls
+        autoplay
+        muted
+        loop
+        playsinline
+        poster={entry.data.hero_image?.src}
+      />
+    ) : (
+      entry.data.hero_image && (
+        <Image
+          src={entry.data.hero_image}
+          alt={entry.data.hero_image_alt ?? entry.data.title}
+          width={1600}
+          height={900}
+          class="overview-image"
+        />
+      )
+    )
+  }
+</PageLayout>
+
+<style>
+  .overview-image {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    margin: 2rem auto 0;
+    border-radius: var(--radius);
+  }
+
+  .overview-video {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin: 2rem auto 0;
+    border-radius: var(--radius);
+    background: #000;
+    object-fit: cover;
+  }
+</style>
