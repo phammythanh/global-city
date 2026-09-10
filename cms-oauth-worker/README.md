@@ -10,7 +10,7 @@ independent of the Astro site and deploys separately.
 GitHub → Settings → Developer settings → OAuth Apps → New OAuth App:
 
 - Homepage URL: `https://globalcity.batdongsansinhloi.com`
-- Authorization callback URL: `https://globalcity-cms-auth.<your-subdomain>.workers.dev/callback`
+- Authorization callback URL: `https://global-city-cms-auth.<your-subdomain>.workers.dev/callback`
 
 Copy the generated **Client ID** and **Client Secret**.
 
@@ -26,7 +26,7 @@ npm run deploy
 ```
 
 Wrangler prints the deployed URL, e.g.
-`https://globalcity-cms-auth.<your-subdomain>.workers.dev`.
+`https://global-city-cms-auth.<your-subdomain>.workers.dev`.
 
 ## 3. Point Decap CMS at it
 
@@ -34,9 +34,9 @@ In [`public/admin/config.yml`](../public/admin/config.yml), set:
 
 ```yaml
 backend:
-  base_url: https://globalcity-cms-auth.<your-subdomain>.workers.dev
+  base_url: https://global-city-cms-auth.<your-subdomain>.workers.dev
 ```
 
 Commit and push — Cloudflare Pages redeploys the site, and `/admin` will be
 able to log editors in with their GitHub account (they must have write
-access to `phammythanh/globalcity`).
+access to `phammythanh/global-city`).

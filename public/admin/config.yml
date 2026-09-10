@@ -1,9 +1,9 @@
 backend:
   name: github
-  repo: phammythanh/globalcity
+  repo: phammythanh/global-city
   branch: main
   # OAuth worker deployed from cms-oauth-worker/ (see its README.md).
-  base_url: https://globalcity-cms-auth.thanhpham-era.workers.dev
+  base_url: https://global-city-cms-auth.thanhpham-era.workers.dev
   auth_endpoint: auth
 
 site_url: https://globalcity.batdongsansinhloi.com

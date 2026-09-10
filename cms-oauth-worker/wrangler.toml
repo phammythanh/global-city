@@ -1,4 +1,4 @@
-name = "globalcity-cms-auth"
+name = "global-city-cms-auth"
 main = "src/index.js"
 compatibility_date = "2026-09-06"
 account_id = "f37fcccb57dec33761183b5ebd169582"

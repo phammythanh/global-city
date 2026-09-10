@@ -7,11 +7,9 @@ compatibility_date = "2026-09-06"
 pages_build_output_dir = "dist"
 
 # Stores contact-form submissions from functions/api/lien-he.ts.
-# TODO: create the namespace and paste its id here:
-#   npx wrangler kv namespace create LIEN_HE_LEADS
 [[kv_namespaces]]
 binding = "LIEN_HE_LEADS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "4c8a6cd2f2eb44f6bc59e8d874aaca27"
 
 # NOTE: a "send_email" binding for lead-notification emails can NOT go here -
 # Cloudflare Pages' config-file validation rejects it outright

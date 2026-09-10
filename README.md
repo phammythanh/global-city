@@ -3,7 +3,7 @@
 Astro 5 (static) + Decap CMS + Cloudflare Pages.
 
 - **Site**: https://globalcity.batdongsansinhloi.com
-- **Repo**: `phammythanh/globalcity` (private)
+- **Repo**: `phammythanh/global-city` (private)
 - **Cloudflare Pages project**: `global-city`
 
 ## Stack
@@ -73,7 +73,7 @@ To try the CMS locally, run Decap's local proxy in a second terminal
 1. Deploy the OAuth worker — see [`cms-oauth-worker/README.md`](cms-oauth-worker/README.md).
 2. Update `base_url` in [`public/admin/config.yml`](public/admin/config.yml)
    with the deployed worker URL.
-3. Give editors write access to `phammythanh/globalcity` on GitHub —
+3. Give editors write access to `phammythanh/global-city` on GitHub —
    Decap CMS authenticates as the logged-in GitHub user and commits as them.
 
 ## Deploying to Cloudflare Pages
@@ -82,7 +82,7 @@ Dashboard → **Workspace → Pages → Create → Connect to Git**:
 
 - Account: (id `f37fcccb57dec33761183b5ebd169582`)
 - Project name: `global-city`
-- Repository: `phammythanh/globalcity`
+- Repository: `phammythanh/global-city`
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Environment variable: `NODE_VERSION=20` (also pinned in `.node-version`)
@@ -92,12 +92,8 @@ the CNAME record it gives you under the `batdongsansinhloi.com` zone in
 Cloudflare DNS (or let Cloudflare add it automatically if the zone is on the
 same account).
 
-Before the first deploy, also create the KV namespace the contact form
-writes to, and paste its id into `wrangler.toml`:
-
-```bash
-npx wrangler kv namespace create LIEN_HE_LEADS
-```
+The KV namespace the contact form writes to (`LIEN_HE_LEADS`) already exists
+and its id is in `wrangler.toml`.
 
 ## Brand
 
@@ -109,20 +105,20 @@ npx wrangler kv namespace create LIEN_HE_LEADS
   purchased files into `public/fonts/` as `CeraPro-Black.woff2` /
   `CeraPro-Black.woff` (declared in `src/styles/global.css`); until then the
   site falls back to Montserrat/system sans automatically.
-- `src/assets/logo.png` and `src/assets/og-cover.png` are placeholders —
-  replace with the real Global City logo and cover render, then run
-  `npm run dev` (or `predev`/`prebuild`) to regenerate `public/favicon.png`
-  and `public/og/default.jpg`.
+- `src/assets/logo.png` is the real logo; `src/assets/og-cover.png` is that
+  logo composited onto a brand-colored card for link previews. Replace
+  either and run `npm run dev` (or `predev`/`prebuild`) to regenerate
+  `public/favicon.png` and `public/og/default.jpg`.
 - Hotline `0903596692` · Email `thanh@batdongsansinhloi.com` (edit under
   **Cấu hình chung** in the CMS, not hardcoded — see `src/content/settings/site.yml`)
 
 ## Not yet done
 
-- [ ] Real logo / OG cover art (placeholders in `src/assets/`)
 - [ ] Cera Black font files in `public/fonts/`
-- [ ] Create the GitHub repo `phammythanh/globalcity` (private) and push
+- [x] Create the GitHub repo `phammythanh/global-city` (private) and push
 - [ ] Deploy `cms-oauth-worker/` and point `public/admin/config.yml` at it
-- [ ] Create the Cloudflare Pages project + KV namespace + custom domain
+- [x] Create the KV namespace (id pasted into `wrangler.toml`)
+- [ ] Create the Cloudflare Pages project (dashboard, Connect to Git) + custom domain
 - [ ] Add a Google Analytics (GA4) tag once you have a Global City property
       (deliberately not wired up yet — the old snippet was Sensa Park's own
       measurement ID)
