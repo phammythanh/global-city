@@ -6,8 +6,25 @@ import { formatPhone } from '../utils/format';
 const nav = [
   { href: '/', label: 'Tổng quan' },
   { href: '/vi-tri', label: 'Vị trí' },
-  { href: '/thap-tang', label: 'Thấp tầng' },
-  { href: '/cao-tang', label: 'Cao tầng' },
+  {
+    href: '/thap-tang',
+    label: 'Thấp tầng',
+    children: [
+      { href: '/thap-tang/soho', label: 'SOHO' },
+      { href: '/thap-tang/sola', label: 'SOLA' },
+    ],
+  },
+  {
+    href: '/cao-tang',
+    label: 'Cao tầng',
+    children: [
+      { href: '/cao-tang/masteri-grand-view', label: 'Masteri Grand View' },
+      { href: '/cao-tang/lumiere-midtown', label: 'Lumière Midtown' },
+      { href: '/cao-tang/masteri-park-place', label: 'Masteri Park Place' },
+      { href: '/cao-tang/masteri-cosmo-central', label: 'Masteri Cosmo Central' },
+      { href: '/cao-tang/masteri-cosmo-central-nexus-zone', label: 'Masteri Cosmo Central (Nexus Zone)' },
+    ],
+  },
   { href: '/tin-tuc', label: 'Tin tức' },
   { href: '/lien-he', label: 'Liên hệ' },
 ];
@@ -35,10 +52,31 @@ const { phone } = Astro.props;
               currentPath === item.href.replace(/\/$/, '') ||
               (item.href !== '/' && currentPath.startsWith(item.href));
             return (
-              <li>
+              <li class:list={['nav-item', item.children && 'has-dropdown']}>
                 <a href={item.href} aria-current={isActive ? 'page' : undefined}>
                   {item.label}
                 </a>
+                {item.children && (
+                  <>
+                    <button
+                      type="button"
+                      class="dropdown-toggle"
+                      aria-expanded="false"
+                      aria-label={`Xem danh sách ${item.label}`}
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                    <ul class="dropdown-menu">
+                      {item.children.map((child) => (
+                        <li>
+                          <a href={child.href}>{child.label}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </li>
             );
           })
@@ -63,6 +101,25 @@ const { phone } = Astro.props;
     const isOpen = nav?.classList.toggle('open');
     burger.setAttribute('aria-expanded', String(Boolean(isOpen)));
   });
+
+  // Hover opens the dropdown on desktop (CSS-only); the caret button below
+  // makes it reachable by click/tap too (touch screens, keyboard) and on
+  // the mobile slide-down nav where hover doesn't apply at all.
+  document.querySelectorAll<HTMLLIElement>('.nav-item.has-dropdown').forEach((item) => {
+    const toggle = item.querySelector<HTMLButtonElement>('.dropdown-toggle');
+    toggle?.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll<HTMLLIElement>('.nav-item.has-dropdown.is-open').forEach((item) => {
+      if (item.contains(e.target as Node)) return;
+      item.classList.remove('is-open');
+      item.querySelector('.dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+    });
+  });
 </script>
 
 <style>
@@ -71,7 +128,7 @@ const { phone } = Astro.props;
     top: 0;
     z-index: 40;
     background: var(--color-bg);
-    border-bottom: 1px solid rgba(74, 63, 48, 0.15);
+    border-bottom: 1px solid rgba(43, 43, 43, 0.15);
   }
 
   .bar {
@@ -92,7 +149,7 @@ const { phone } = Astro.props;
     width: auto;
   }
 
-  .nav ul {
+  .nav > ul {
     display: flex;
     gap: 1.5rem;
     list-style: none;
@@ -114,6 +171,76 @@ const { phone } = Astro.props;
   .nav a[aria-current='page'] {
     color: var(--color-primary-dark);
     border-color: var(--color-accent);
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    margin-left: 0.15rem;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .dropdown-toggle svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.15s ease;
+  }
+
+  .has-dropdown .dropdown-toggle {
+    display: inline-flex;
+  }
+
+  .has-dropdown.is-open .dropdown-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem;
+    background: var(--color-surface);
+    border-radius: calc(var(--radius) - 4px);
+    box-shadow: 0 12px 28px rgba(43, 43, 43, 0.14);
+    min-width: 15rem;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    border: none;
+    border-radius: calc(var(--radius) - 6px);
+    white-space: nowrap;
+  }
+
+  .dropdown-menu a:hover {
+    background: var(--color-bg);
+  }
+
+  @media (min-width: 861px) {
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      display: none;
+      z-index: 50;
+    }
+
+    .has-dropdown:hover .dropdown-menu,
+    .has-dropdown.is-open .dropdown-menu {
+      display: block;
+    }
   }
 
   .phone {
@@ -142,7 +269,7 @@ const { phone } = Astro.props;
       inset-inline: 0;
       top: 100%;
       background: var(--color-bg);
-      border-bottom: 1px solid rgba(74, 63, 48, 0.15);
+      border-bottom: 1px solid rgba(43, 43, 43, 0.15);
       display: none;
     }
 
@@ -150,7 +277,7 @@ const { phone } = Astro.props;
       display: block;
     }
 
-    .nav ul {
+    .nav > ul {
       flex-direction: column;
       gap: 0;
       padding: 0.5rem 1.25rem 1rem;
@@ -159,6 +286,35 @@ const { phone } = Astro.props;
     .nav a {
       display: block;
       padding-block: 0.6rem;
+    }
+
+    .nav-item {
+      display: block;
+    }
+
+    .nav-item .dropdown-toggle {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      padding-inline: 0.75rem;
+    }
+
+    .dropdown-menu {
+      display: none;
+      background: transparent;
+      box-shadow: none;
+      padding: 0 0 0.5rem 1rem;
+      min-width: 0;
+    }
+
+    .has-dropdown.is-open .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      color: var(--color-text-muted);
+      padding-block: 0.45rem;
     }
 
     .phone {

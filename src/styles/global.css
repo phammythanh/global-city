@@ -13,13 +13,14 @@
 }
 
 :root {
-  --color-primary: #b87018;
-  --color-primary-dark: #4a3f30;
-  --color-accent: #b88040;
-  --color-bg: #f0f0e8;
+  --color-primary: #886848;
+  --color-primary-dark: #2b2b2b;
+  --color-accent: #a89878;
+  --color-bg: #f8f8f8;
   --color-surface: #ffffff;
-  --color-text: #4a3f30;
-  --color-text-muted: #8b7355;
+  --color-text: #2b2b2b;
+  --color-text-muted: #a89878;
+  --color-on-dark: #ffffff;
   --font-heading: 'Cera Black', 'Montserrat', system-ui, sans-serif;
   --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
   --container-width: 1180px;
@@ -116,7 +117,7 @@ img {
 }
 
 .btn-primary:hover {
-  background: #9a6a34;
+  background: #94866a;
 }
 
 .btn-outline {
@@ -152,14 +153,14 @@ img {
 
 .prose th,
 .prose td {
-  border: 1px solid rgba(74, 63, 48, 0.2);
+  border: 1px solid rgba(43, 43, 43, 0.2);
   padding: 0.65em 1em;
   text-align: left;
   vertical-align: top;
 }
 
 .prose th {
-  background: rgba(74, 63, 48, 0.08);
+  background: rgba(43, 43, 43, 0.08);
   font-family: var(--font-heading);
   font-weight: 600;
   color: var(--color-primary-dark);
@@ -167,7 +168,7 @@ img {
 }
 
 .prose tbody tr:nth-child(even) {
-  background: rgba(74, 63, 48, 0.04);
+  background: rgba(43, 43, 43, 0.04);
 }
 
 .tabs {
@@ -193,7 +194,7 @@ img {
   font-weight: 600;
   font-size: 0.9rem;
   background: var(--color-surface);
-  border: 1px solid rgba(74, 63, 48, 0.2);
+  border: 1px solid rgba(43, 43, 43, 0.2);
   border-radius: 999px;
   padding: 0.65rem 1.4rem;
   color: var(--color-text-muted);

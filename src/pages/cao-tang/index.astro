@@ -3,41 +3,47 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const posts = (await getCollection('news', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+// Explicit order (not filesystem order) - matches the header dropdown.
+const ORDER = [
+  'masteri-grand-view',
+  'lumiere-midtown',
+  'masteri-park-place',
+  'masteri-cosmo-central',
+  'masteri-cosmo-central-nexus-zone',
+];
+const items = (await getCollection('cao-tang')).sort(
+  (a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id)
 );
 ---
 
-<BaseLayout title="Tin tức" description="Tin tức và cập nhật mới nhất từ dự án Global City.">
+<BaseLayout
+  title="Cao tầng"
+  description="Các sản phẩm cao tầng tại Global City: Masteri Grand View, Lumière Midtown, Masteri Park Place, Masteri Cosmo Central, Masteri Cosmo Central (Nexus Zone)."
+>
   <section class="hero">
     <div class="container">
-      <h1>Tin tức</h1>
+      <h1>Cao tầng</h1>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      {posts.length === 0 && <p>Chưa có bài viết nào.</p>}
       <div class="grid">
         {
-          posts.map((post) => (
-            <a class="card" href={`/tin-tuc/${post.id}`}>
-              {post.data.cover && (
+          items.map((item) => (
+            <a class="card" href={`/cao-tang/${item.id}`}>
+              {item.data.hero_image && (
                 <div class="card-image">
                   <Image
-                    src={post.data.cover}
-                    alt={post.data.cover_alt ?? post.data.title}
+                    src={item.data.hero_image}
+                    alt={item.data.hero_image_alt ?? item.data.title}
                     width={960}
                     height={600}
                   />
                 </div>
               )}
               <div class="card-body">
-                <p class="date">
-                  {post.data.date.toLocaleDateString('vi-VN')}
-                </p>
-                <h2>{post.data.title}</h2>
-                <p>{post.data.excerpt}</p>
+                <h2>{item.data.title}</h2>
               </div>
             </a>
           ))
@@ -80,8 +86,6 @@ const posts = (await getCollection('news', ({ data }) => !data.draft)).sort(
     transform: translateY(-3px);
   }
 
-  /* Fixed 8:5 box, center-cropped so covers of any ratio still fill the
-     card without stretching or changing the card's height. */
   .card-image {
     aspect-ratio: 8 / 5;
     overflow: hidden;
@@ -96,17 +100,10 @@ const posts = (await getCollection('news', ({ data }) => !data.draft)).sort(
   }
 
   .card-body {
-    padding: 1.25rem;
+    padding: 1.5rem;
   }
 
   .card h2 {
-    font-size: 1.15rem;
-    margin: 0.25rem 0 0.5rem;
-  }
-
-  .date {
-    color: var(--color-text-muted);
-    font-size: 0.85rem;
     margin: 0;
   }
 </style>

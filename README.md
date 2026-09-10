@@ -28,9 +28,14 @@ src/
   content/
     config.ts          content collection schemas
     settings/site.yml   contact info + default SEO (single "file" collection)
-    pages/*.md          Tổng quan / Vị trí / Thấp tầng / Cao tầng / Liên hệ
+    pages/*.md          Tổng quan / Vị trí / Liên hệ
+    thap-tang/*.md      SOHO, SOLA (folder collection, fixed set of files)
+    cao-tang/*.md       Masteri Grand View / Lumière Midtown / Masteri Park
+                         Place / Masteri Cosmo Central / Masteri Cosmo
+                         Central (Nexus Zone) (folder collection)
     news/*.md           Tin tức posts (folder collection)
-  components/           Header, Footer, SEO, FloorPlanGallery, GlobalLightbox
+  components/           Header (incl. dropdown nav), Footer, SEO,
+                         FloorPlanGallery, GlobalLightbox
   layouts/               BaseLayout (head/nav/footer), PageLayout (hero + prose)
   pages/                 routes (see table below)
 public/
@@ -46,14 +51,24 @@ cms-oauth-worker/        standalone Cloudflare Worker, GitHub OAuth for Decap
 
 ## Routes / menu chính
 
-| Route         | Menu       | Source                             |
-| ------------- | ---------- | ----------------------------------- |
-| `/`           | Tổng quan  | `src/content/pages/tong-quan.md`    |
-| `/vi-tri`     | Vị trí     | `src/content/pages/vi-tri.md`       |
-| `/thap-tang`  | Thấp tầng  | `src/content/pages/thap-tang.md`    |
-| `/cao-tang`   | Cao tầng   | `src/content/pages/cao-tang.md`     |
-| `/tin-tuc`    | Tin tức    | `src/content/news/*.md`             |
-| `/lien-he`    | Liên hệ    | `src/content/pages/lien-he.md`      |
+| Route                                  | Menu                              | Source                                              |
+| --------------------------------------- | ---------------------------------- | ---------------------------------------------------- |
+| `/`                                      | Tổng quan                          | `src/content/pages/tong-quan.md`                     |
+| `/vi-tri`                                 | Vị trí                             | `src/content/pages/vi-tri.md`                        |
+| `/thap-tang`                              | Thấp tầng (dropdown)               | overview, cards → SOHO / SOLA                        |
+| `/thap-tang/soho`, `/thap-tang/sola`      | ↳ SOHO, SOLA                       | `src/content/thap-tang/*.md`                         |
+| `/cao-tang`                                | Cao tầng (dropdown)                 | overview, cards → 5 dự án bên dưới                   |
+| `/cao-tang/masteri-grand-view`             | ↳ Masteri Grand View                | `src/content/cao-tang/masteri-grand-view.md`         |
+| `/cao-tang/lumiere-midtown`                | ↳ Lumière Midtown                   | `src/content/cao-tang/lumiere-midtown.md`            |
+| `/cao-tang/masteri-park-place`             | ↳ Masteri Park Place                | `src/content/cao-tang/masteri-park-place.md`         |
+| `/cao-tang/masteri-cosmo-central`          | ↳ Masteri Cosmo Central             | `src/content/cao-tang/masteri-cosmo-central.md`      |
+| `/cao-tang/masteri-cosmo-central-nexus-zone` | ↳ Masteri Cosmo Central (Nexus Zone) | `src/content/cao-tang/masteri-cosmo-central-nexus-zone.md` |
+| `/tin-tuc`                                 | Tin tức                            | `src/content/news/*.md`                              |
+| `/lien-he`                                 | Liên hệ                            | `src/content/pages/lien-he.md`                       |
+
+The "Thấp tầng" and "Cao tầng" nav items open a dropdown (hover on desktop,
+tap the caret on mobile/touch) straight to each project's page; the parent
+link itself goes to an overview page listing the same options as cards.
 
 Plus `/rss.xml` (news feed) and an auto-generated `/sitemap-index.xml`.
 
@@ -97,8 +112,8 @@ and its id is in `wrangler.toml`.
 
 ## Brand
 
-- Primary `#B87018` · Accent `#B88040` · Nền `#F0F0E8`
-- Text phụ `#8B7355` · Text đậm `#4A3F30`
+- Primary `#886848` · Accent `#A89878` · Nền `#F8F8F8`
+- Text thường `#2B2B2B` · Text trên nền tối `#FFFFFF`
 - Heading: **Cera Black** · Body: Be Vietnam Pro (loaded via Google Fonts in
   `src/layouts/BaseLayout.astro`)
 - Cera Black is a commercial font, not available on Google Fonts. Drop the

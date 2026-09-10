@@ -77,10 +77,18 @@ collections:
         label: "Vị trí"
         name: "vi-tri"
         fields: *page_fields
-      - file: "src/content/pages/thap-tang.md"
-        label: "Thấp tầng"
-        name: "thap-tang"
-        fields: &low_high_rise_fields
+      - file: "src/content/pages/lien-he.md"
+        label: "Liên hệ"
+        name: "lien-he"
+        fields: *page_fields
+
+  - name: "thap-tang"
+    label: "Thấp tầng"
+    files:
+      - file: "src/content/thap-tang/soho.md"
+        label: "SOHO"
+        name: "soho"
+        fields: &project_fields
           - { label: "Tiêu đề", name: "title", widget: "string" }
           - label: "SEO Title"
             name: "seo_title"
@@ -95,13 +103,30 @@ collections:
             media_folder: "images/{{slug}}"
             public_folder: "images/{{slug}}"
           - { label: "Mô tả ảnh (alt)", name: "hero_image_alt", widget: "string", required: false }
+          - label: "Video giới thiệu (nếu có, sẽ ưu tiên hiển thị thay ảnh nền)"
+            name: "intro_video"
+            widget: "file"
+            required: false
+            media_folder: "public/videos"
+            public_folder: "/videos"
           - { label: "Nội dung", name: "body", widget: "markdown" }
-          - label: "Nhóm hình ảnh (theo phân khu / block)"
+          - label: "Ảnh (hiển thị full chiều rộng, từ trên xuống dưới)"
+            name: "gallery"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Ảnh"
+                name: "image"
+                widget: "image"
+                media_folder: "images/{{slug}}"
+                public_folder: "images/{{slug}}"
+              - { label: "Chú thích", name: "caption", widget: "string", required: false }
+          - label: "Nhóm hình ảnh (VD: mặt bằng, phối cảnh...)"
             name: "gallery_groups"
             widget: "list"
             required: false
             fields:
-              - { label: "Tên nhóm (VD: Soho, Sola...)", name: "label", widget: "string" }
+              - { label: "Tên nhóm", name: "label", widget: "string" }
               - label: "Ảnh trong nhóm"
                 name: "items"
                 widget: "list"
@@ -112,14 +137,34 @@ collections:
                     media_folder: "images/{{slug}}"
                     public_folder: "images/{{slug}}"
                   - { label: "Chú thích", name: "caption", widget: "string", required: false }
-      - file: "src/content/pages/cao-tang.md"
-        label: "Cao tầng"
-        name: "cao-tang"
-        fields: *low_high_rise_fields
-      - file: "src/content/pages/lien-he.md"
-        label: "Liên hệ"
-        name: "lien-he"
-        fields: *page_fields
+      - file: "src/content/thap-tang/sola.md"
+        label: "SOLA"
+        name: "sola"
+        fields: *project_fields
+
+  - name: "cao-tang"
+    label: "Cao tầng"
+    files:
+      - file: "src/content/cao-tang/masteri-grand-view.md"
+        label: "Masteri Grand View"
+        name: "masteri-grand-view"
+        fields: *project_fields
+      - file: "src/content/cao-tang/lumiere-midtown.md"
+        label: "Lumière Midtown"
+        name: "lumiere-midtown"
+        fields: *project_fields
+      - file: "src/content/cao-tang/masteri-park-place.md"
+        label: "Masteri Park Place"
+        name: "masteri-park-place"
+        fields: *project_fields
+      - file: "src/content/cao-tang/masteri-cosmo-central.md"
+        label: "Masteri Cosmo Central"
+        name: "masteri-cosmo-central"
+        fields: *project_fields
+      - file: "src/content/cao-tang/masteri-cosmo-central-nexus-zone.md"
+        label: "Masteri Cosmo Central (Nexus Zone)"
+        name: "masteri-cosmo-central-nexus-zone"
+        fields: *project_fields
 
   - name: "news"
     label: "Tin tức"

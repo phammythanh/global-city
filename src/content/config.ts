@@ -1,40 +1,59 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z, type SchemaContext } from 'astro:content';
 import { glob, file } from 'astro/loaders';
+
+// Shared by "pages" and the per-project "thap-tang"/"cao-tang" collections -
+// a title/hero/video/body page that can optionally carry a flat image
+// gallery or several labeled groups of images (e.g. mặt bằng theo tầng).
+const pageSchema = ({ image }: SchemaContext) =>
+  z.object({
+    title: z.string(),
+    seo_title: z.string().optional(),
+    seo_description: z.string().max(200).optional(),
+    hero_image: image().optional(),
+    hero_image_alt: z.string().optional(),
+    // Public-folder video path (e.g. /videos/foo.mp4) - not passed through
+    // image(), since astro:assets only processes images.
+    intro_video: z.string().optional(),
+    gallery: z
+      .array(
+        z.object({
+          image: image(),
+          caption: z.string().optional(),
+        })
+      )
+      .optional(),
+    gallery_groups: z
+      .array(
+        z.object({
+          label: z.string(),
+          items: z.array(
+            z.object({
+              image: image(),
+              caption: z.string().optional(),
+            })
+          ),
+        })
+      )
+      .optional(),
+  });
 
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      seo_title: z.string().optional(),
-      seo_description: z.string().max(200).optional(),
-      hero_image: image().optional(),
-      hero_image_alt: z.string().optional(),
-      // Public-folder video path (e.g. /videos/foo.mp4) - not passed through
-      // image(), since astro:assets only processes images.
-      intro_video: z.string().optional(),
-      gallery: z
-        .array(
-          z.object({
-            image: image(),
-            caption: z.string().optional(),
-          })
-        )
-        .optional(),
-      gallery_groups: z
-        .array(
-          z.object({
-            label: z.string(),
-            items: z.array(
-              z.object({
-                image: image(),
-                caption: z.string().optional(),
-              })
-            ),
-          })
-        )
-        .optional(),
-    }),
+  schema: pageSchema,
+});
+
+// Thấp tầng: SOHO, SOLA. Cao tầng: Masteri Grand View, Lumière Midtown,
+// Masteri Park Place, Masteri Cosmo Central, Masteri Cosmo Central (Nexus
+// Zone) - one markdown file per product, listed in the header's dropdowns
+// (src/components/Header.astro) and Decap's "files" collections.
+const thapTang = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/thap-tang' }),
+  schema: pageSchema,
+});
+
+const caoTang = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/cao-tang' }),
+  schema: pageSchema,
 });
 
 const news = defineCollection({
@@ -71,4 +90,4 @@ const settings = defineCollection({
   }),
 });
 
-export const collections = { pages, news, settings };
+export const collections = { pages, news, settings, 'thap-tang': thapTang, 'cao-tang': caoTang };

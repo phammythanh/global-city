@@ -1,0 +1,68 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import FloorPlanGallery from '../../components/FloorPlanGallery.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('thap-tang');
+  return items.map((item) => ({
+    params: { slug: item.id },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<PageLayout
+  title={item.data.title}
+  seoTitle={item.data.seo_title}
+  description={item.data.seo_description}
+  heroImage={item.data.hero_image}
+  heroImageAlt={item.data.hero_image_alt}
+>
+  {
+    item.data.intro_video && (
+      <video class="intro-video" src={item.data.intro_video} controls autoplay muted loop playsinline />
+    )
+  }
+  <Content />
+
+  {item.data.gallery && <FloorPlanGallery items={item.data.gallery} layout="stacked" />}
+
+  {
+    item.data.gallery_groups?.map((group) => (
+      <div class="gallery-group">
+        <h2>{group.label}</h2>
+        <FloorPlanGallery items={group.items} />
+      </div>
+    ))
+  }
+</PageLayout>
+
+<style>
+  .intro-video {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin: 0 auto 2rem;
+    border-radius: var(--radius);
+    background: #000;
+    object-fit: cover;
+  }
+
+  /* The floor-plan gallery needs more than the 72ch prose measure meant
+     for reading paragraphs, but should still sit centered with room to
+     breathe on both sides rather than stretch edge-to-edge. */
+  :global(.prose:has(.floorplan-gallery)) {
+    max-width: 960px;
+    margin-inline: auto;
+  }
+
+  .gallery-group {
+    margin-top: 2.5rem;
+  }
+</style>
