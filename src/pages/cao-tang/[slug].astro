@@ -69,14 +69,17 @@ const { Content } = await render(item);
   }
 
   {
-    item.data.sales_policy && (
+    (item.data.policy_gallery || item.data.sales_policy) && (
       <>
         <h2>Chính sách bán hàng</h2>
-        <ul>
-          {item.data.sales_policy.map((line) => (
-            <li>{line}</li>
-          ))}
-        </ul>
+        {item.data.policy_gallery && <FloorPlanGallery items={item.data.policy_gallery} layout="grid-3" />}
+        {item.data.sales_policy && (
+          <ul>
+            {item.data.sales_policy.map((line) => (
+              <li>{line}</li>
+            ))}
+          </ul>
+        )}
         <p>
           <em>Chính sách bán hàng áp dụng theo từng thời điểm mở bán và có thể thay đổi, liên hệ hotline để được cập nhật chính sách mới nhất.</em>
         </p>

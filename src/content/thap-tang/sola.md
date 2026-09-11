@@ -30,10 +30,13 @@ price_table:
     price: 57 - 97 tỷ đồng
   - label: Biệt thự đơn lập
     price: 63 - 103 tỷ đồng
-sales_policy:
-  - "Chính sách Early Bird cho khách hàng mới: chiết khấu 1%"
-  - "Chính sách Early Bird cho cư dân Masterise Homes: chiết khấu 2%"
-  - "Hỗ trợ phí quản lý: miễn phí 36 tháng kể từ ngày chủ đầu tư bàn giao nhà"
+policy_gallery:
+  - image: ./images/sola/chinh-sach-early-bird-khach-moi.webp
+    caption: "Early Bird - Khách hàng mới: chiết khấu 1%"
+  - image: ./images/sola/chinh-sach-early-bird-cu-dan.webp
+    caption: "Early Bird - Cư dân Masterise Homes: chiết khấu 2%"
+  - image: ./images/sola/chinh-sach-ho-tro-phi-quan-ly.webp
+    caption: "Hỗ trợ phí quản lý: 36 tháng"
 lead_form_title: Đăng ký tư vấn và check căn Sola
 ---
 

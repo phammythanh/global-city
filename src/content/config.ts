@@ -51,6 +51,16 @@ const pageSchema = ({ image }: SchemaContext) =>
       .optional(),
     // Renders as a "Chính sách bán hàng" bullet list after price_table.
     sales_policy: z.array(z.string()).optional(),
+    // Alternative to sales_policy: a "Chính sách bán hàng" image gallery
+    // (e.g. scanned policy slides) instead of a text list.
+    policy_gallery: z
+      .array(
+        z.object({
+          image: image(),
+          caption: z.string().optional(),
+        })
+      )
+      .optional(),
     // Shows an embedded lead-capture form (posts to /api/lien-he) at the
     // very end of the page when set, titled with this text.
     lead_form_title: z.string().optional(),

@@ -9,9 +9,10 @@ interface GalleryItem {
 
 interface Props {
   items: GalleryItem[];
-  /** "grid" (default) auto-fills small thumbnails; "grid-2" fixes it at
-   * 2 columns; "stacked" shows each image full-width, one below another. */
-  layout?: 'grid' | 'grid-2' | 'stacked';
+  /** "grid" (default) auto-fills small thumbnails; "grid-2"/"grid-3" fix
+   * it at 2 or 3 columns; "stacked" shows each image full-width, one
+   * below another. */
+  layout?: 'grid' | 'grid-2' | 'grid-3' | 'stacked';
 }
 
 const { items, layout = 'grid' } = Astro.props;
@@ -32,6 +33,7 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     'floorplan-gallery',
     layout === 'stacked' && 'is-stacked',
     layout === 'grid-2' && 'is-grid-2',
+    layout === 'grid-3' && 'is-grid-3',
   ]}
   data-gallery-root={uid}
 >
@@ -138,8 +140,19 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .floorplan-gallery.is-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 720px) {
+    .floorplan-gallery.is-grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 560px) {
-    .floorplan-gallery.is-grid-2 {
+    .floorplan-gallery.is-grid-2,
+    .floorplan-gallery.is-grid-3 {
       grid-template-columns: 1fr;
     }
   }
