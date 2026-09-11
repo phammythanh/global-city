@@ -57,6 +57,8 @@ price_table:
 
 Masteri Grand View là phân khu cao tầng đầu tiên ra mắt tại The Global City, định vị theo tiêu chuẩn sống hiện đại và cao cấp.
 
+![Masteri Grand View - The Global City](./images/masteri-grand-view/phoi-canh-intro.webp)
+
 ### 1. Kiến trúc
 
 - **Thiết kế bởi Foster + Partners:** ngôn ngữ kiến trúc đương đại, chú trọng tính bền vững và thẩm mỹ
