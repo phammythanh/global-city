@@ -111,8 +111,9 @@ and its id is in `wrangler.toml`.
 
 ## Brand
 
-- Primary `#A78948` · Accent `#A89878` · Nền `#F8F8F8`
+- Primary `#A78948` · Accent `#886848` · Nền `#F8F8F8`
 - Text thường `#2B2B2B` · Text trên nền tối `#FFFFFF`
+- Nền footer `#886848` (riêng, không dùng chung biến với heading/label tối)
 - Heading: **Cera Black** · Body: Be Vietnam Pro (loaded via Google Fonts in
   `src/layouts/BaseLayout.astro`)
 - Cera Black is a commercial font, not available on Google Fonts. Drop the
