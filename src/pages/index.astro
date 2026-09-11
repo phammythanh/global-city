@@ -1,6 +1,5 @@
 ---
 import { getEntry, render } from 'astro:content';
-import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
 
 const entry = await getEntry('pages', 'tong-quan');
@@ -12,11 +11,13 @@ const { Content } = await render(entry);
   title={entry.data.title}
   seoTitle={entry.data.seo_title}
   description={entry.data.seo_description}
+  heroImage={entry.data.hero_image}
+  heroImageAlt={entry.data.hero_image_alt}
 >
   <Content />
 
   {
-    entry.data.intro_video ? (
+    entry.data.intro_video && (
       <video
         class="overview-video"
         src={entry.data.intro_video}
@@ -27,30 +28,11 @@ const { Content } = await render(entry);
         playsinline
         poster={entry.data.hero_image?.src}
       />
-    ) : (
-      entry.data.hero_image && (
-        <Image
-          src={entry.data.hero_image}
-          alt={entry.data.hero_image_alt ?? entry.data.title}
-          width={1600}
-          height={900}
-          class="overview-image"
-        />
-      )
     )
   }
 </PageLayout>
 
 <style>
-  .overview-image {
-    display: block;
-    width: 100%;
-    max-width: 960px;
-    height: auto;
-    margin: 2rem auto 0;
-    border-radius: var(--radius);
-  }
-
   .overview-video {
     display: block;
     width: 100%;

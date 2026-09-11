@@ -7,18 +7,16 @@ seo_description: SOHO - phân khu nhà phố thương mại 13,5 ha tại The Gl
 hero_image: ./images/soho/banner.webp
 hero_image_alt: SOHO - Khu nhà phố thương mại tại The Global City
 gallery_groups:
-  - label: Tiện ích nội khu
+  - label: Công viên nội khu
     items:
-      - image: ./images/soho/tien-ich-pho-thuong-mai.webp
-        caption: "Phố thương mại SOHO - dãy shophouse hiện đại, kết hợp kinh doanh, làm việc, lưu trú linh hoạt"
-      - image: ./images/soho/tien-ich-cau-di-bo.webp
-        caption: Cầu đi bộ & cầu ánh trăng - điểm kết nối, check-in cảnh quan quanh SOHO
-      - image: ./images/soho/tien-ich-duong-dao-bo.webp
-        caption: "Đường dạo bộ nội khu - tuyến phố lễ hội xuyên tâm phân khu, kết hợp mua sắm, giải trí & ẩm thực"
-      - image: ./images/soho/tien-ich-pho-le-hoi.webp
-        caption: "Phố lễ hội & ẩm thực quốc tế - nhà hàng, quán cà phê, bar hoạt động sôi động về đêm"
-      - image: ./images/soho/tien-ich-canh-quan-xanh.webp
-        caption: Cảnh quan xanh nội khu - mảng xanh xen kẽ, không gian sinh hoạt dễ chịu
+      - image: ./images/soho/cong-vien-cover.webp
+        caption: 3 công viên, 3 nhịp sống tại SOHO
+      - image: ./images/soho/cong-vien-the-yard.webp
+        caption: The Yard - Sống gắn kết
+      - image: ./images/soho/cong-vien-the-square.webp
+        caption: The Square - Sống năng động
+      - image: ./images/soho/cong-vien-the-playground.webp
+        caption: The Playground - Sống tận hưởng
 ---
 
 SOHO là phân khu nhà phố thương mại (shophouse) sôi động và sầm uất bậc nhất tại The Global City, toạ lạc ngay vị trí trung tâm của đại đô thị. Phân khu được thiết kế theo chuẩn mực quốc tế, hướng đến trở thành điểm đến mua sắm, ẩm thực và giải trí hàng đầu khu vực.

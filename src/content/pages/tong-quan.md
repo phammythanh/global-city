@@ -3,6 +3,8 @@ title: Tổng quan dự án Global City
 seo_description: The Global City - đại đô thị 117,4 ha do Masterise Homes phát
   triển tại phường An Phú, TP. Thủ Đức, quy hoạch bởi Foster + Partners. Vị
   trí, quy mô, tiện ích và tiềm năng dự án.
+hero_image: ./images/tong-quan/hero-aerial.webp
+hero_image_alt: Toàn cảnh The Global City nhìn từ trên cao
 ---
 
 ## THE GLOBAL CITY — ĐẠI ĐÔ THỊ QUỐC TẾ KIẾN TẠO "DOWNTOWN MỚI" CHO TP.HCM
