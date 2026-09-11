@@ -7,17 +7,27 @@ seo_description: SOLA - phân khu thấp tầng compound 9,86 ha tại The Globa
 hero_image: ./images/sola/banner.webp
 hero_image_alt: SOLA - Bán đảo villa compound tại The Global City
 gallery:
+  - image: ./images/sola/phoi-canh-boutique-shop.webp
+    caption: Boutique Shop - phối cảnh
   - image: ./images/sola/mat-bang-can-boutique-shop.webp
-    caption: Boutique Shop
+    caption: Boutique Shop - mặt bằng
+  - image: ./images/sola/phoi-canh-nha-pho-lien-ke.webp
+    caption: Nhà phố liên kế vườn - phối cảnh
   - image: ./images/sola/mat-bang-can-nha-pho-lien-ke.webp
-    caption: Nhà phố liên kế vườn
+    caption: Nhà phố liên kế vườn - mặt bằng
+  - image: ./images/sola/phoi-canh-biet-thu-song-lap.webp
+    caption: Biệt thự song lập - phối cảnh
   - image: ./images/sola/mat-bang-can-biet-thu-song-lap.webp
-    caption: Biệt thự song lập
+    caption: Biệt thự song lập - mặt bằng
+  - image: ./images/sola/phoi-canh-biet-thu-don-lap.webp
+    caption: Biệt thự đơn lập - phối cảnh
   - image: ./images/sola/mat-bang-can-biet-thu-don-lap.webp
-    caption: Biệt thự đơn lập
+    caption: Biệt thự đơn lập - mặt bằng
 ---
 
 SOLA là phân khu thấp tầng dạng compound khép kín duy nhất tại The Global City, được định vị làm không gian nghỉ dưỡng riêng tư và tĩnh tại - đối lập với nhịp sống sôi động của khu nhà phố thương mại SOHO. Bán đảo SOLA sở hữu ba mặt giáp sông Rạch Chiếc và kênh đào The Canal of Love.
+
+![Phối cảnh bán đảo villa SOLA](./images/sola/phoi-canh-intro.webp)
 
 ### 1. Quy mô và loại hình sản phẩm
 
