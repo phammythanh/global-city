@@ -42,13 +42,13 @@ gallery_groups:
       - image: ./images/lumiere-midtown/tien-ich-bbq.webp
         caption: Khu BBQ sân thượng
       - image: ./images/lumiere-midtown/tien-ich-xich-du-ngoai-troi.webp
-        caption: Không gian xích đu, thư giãn ngoài trời
+        caption: Không gian thư giãn ngoài trời
       - image: ./images/lumiere-midtown/tien-ich-ho-boi.webp
-        caption: Hồ bơi ngoài trời
+        caption: Hồ bơi vô cực
       - image: ./images/lumiere-midtown/tien-ich-quang-truong.webp
-        caption: Quảng trường thương mại
+        caption: Không gian kết nối
       - image: ./images/lumiere-midtown/tien-ich-pho-thuong-mai.webp
-        caption: Phố thương mại nội khu
+        caption: Khối đế thương mại
 price_table:
   - label: 1 phòng ngủ
     price: 7 - 8 tỷ đồng
