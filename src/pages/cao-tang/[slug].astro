@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
 import FloorPlanGallery from '../../components/FloorPlanGallery.astro';
+import LeadForm from '../../components/LeadForm.astro';
 
 export async function getStaticPaths() {
   const items = await getCollection('cao-tang');
@@ -38,6 +39,55 @@ const { Content } = await render(item);
         <FloorPlanGallery items={group.items} layout={group.layout} />
       </div>
     ))
+  }
+
+  {
+    item.data.price_table && (
+      <>
+        <h2>Giá tham khảo</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Loại hình</th>
+              <th>Giá tham khảo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {item.data.price_table.map((row) => (
+              <tr>
+                <td>{row.label}</td>
+                <td>{row.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p>
+          <em>Giá bán mang tính chất tham khảo, liên hệ hotline để được cập nhật bảng hàng và chính sách mới nhất.</em>
+        </p>
+      </>
+    )
+  }
+
+  {
+    item.data.sales_policy && (
+      <>
+        <h2>Chính sách bán hàng</h2>
+        <ul>
+          {item.data.sales_policy.map((line) => (
+            <li>{line}</li>
+          ))}
+        </ul>
+        <p>
+          <em>Chính sách bán hàng áp dụng theo từng thời điểm mở bán và có thể thay đổi, liên hệ hotline để được cập nhật chính sách mới nhất.</em>
+        </p>
+      </>
+    )
+  }
+
+  {
+    item.data.lead_form_title && (
+      <LeadForm title={item.data.lead_form_title} productType="Cao tầng" projectName={item.data.title} />
+    )
   }
 </PageLayout>
 

@@ -23,6 +23,18 @@ gallery:
     caption: Biệt thự đơn lập - phối cảnh
   - image: ./images/sola/mat-bang-can-biet-thu-don-lap.webp
     caption: Biệt thự đơn lập - mặt bằng
+price_table:
+  - label: Nhà phố liên kế vườn, Boutique Shop
+    price: 47 - 69 tỷ đồng
+  - label: Biệt thự song lập
+    price: 57 - 97 tỷ đồng
+  - label: Biệt thự đơn lập
+    price: 63 - 103 tỷ đồng
+sales_policy:
+  - "Chính sách Early Bird cho khách hàng mới: chiết khấu 1%"
+  - "Chính sách Early Bird cho cư dân Masterise Homes: chiết khấu 2%"
+  - "Hỗ trợ phí quản lý: miễn phí 36 tháng kể từ ngày chủ đầu tư bàn giao nhà"
+lead_form_title: Đăng ký tư vấn và check căn Sola
 ---
 
 SOLA là phân khu thấp tầng dạng compound khép kín duy nhất tại The Global City, được định vị làm không gian nghỉ dưỡng riêng tư và tĩnh tại - đối lập với nhịp sống sôi động của khu nhà phố thương mại SOHO. Bán đảo SOLA sở hữu ba mặt giáp sông Rạch Chiếc và kênh đào The Canal of Love.
@@ -70,17 +82,6 @@ SOLA là phân khu thấp tầng dạng compound khép kín duy nhất tại The
 | Nhà thầu chính | Coteccons |
 | Loại dự án | Dự án thấp tầng |
 | Loại hình sản phẩm | Nhà phố liên kế vườn, Biệt thự song lập, Biệt thự đơn lập, Boutique Shop |
-
-## Loại hình & giá bán tham khảo
-
-| Loại hình | Diện tích đất | Tổng diện tích xây dựng | Giá bán tham khảo |
-| --- | --- | --- | --- |
-| Boutique Shop | 120,0 m² | 357,6 m² | 47 - 69 tỷ đồng |
-| Nhà phố liên kế vườn | 114,0 m² | 333,6 m² | 47 - 69 tỷ đồng |
-| Biệt thự song lập | 152,0 m² | 317,9 m² | 57 - 97 tỷ đồng |
-| Biệt thự đơn lập | 234,5 m² | 390,1 m² | 63 - 103 tỷ đồng |
-
-*Giá bán mang tính chất tham khảo, liên hệ hotline để được cập nhật bảng hàng và chính sách mới nhất.*
 
 ## Mặt bằng tổng quan
 

@@ -1,0 +1,163 @@
+---
+interface Props {
+  title: string;
+  productType: 'Thấp tầng' | 'Cao tầng';
+  projectName: string;
+}
+
+const { title, productType, projectName } = Astro.props;
+const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class="lead-form-card">
+  <h2>{title}</h2>
+  <form class="lead-form" data-product-type={productType} data-project={projectName} novalidate>
+    <div class="field">
+      <label for={`${uid}-name`}>Họ tên *</label>
+      <input id={`${uid}-name`} name="name" type="text" required maxlength="100" autocomplete="name" />
+    </div>
+
+    <div class="field">
+      <label for={`${uid}-phone`}>Số điện thoại *</label>
+      <input id={`${uid}-phone`} name="phone" type="tel" required autocomplete="tel" placeholder="0903 596 692" />
+    </div>
+
+    <div class="field">
+      <label for={`${uid}-message`}>Lời nhắn</label>
+      <textarea id={`${uid}-message`} name="message" rows="3" maxlength="1000"></textarea>
+    </div>
+
+    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+    <button type="submit" class="btn btn-primary">Đăng ký ngay</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</div>
+
+<script>
+  // Astro hoists identical inline scripts into one shared module, so this
+  // wires up every LeadForm instance on the page, not just the first.
+  document.querySelectorAll<HTMLFormElement>('.lead-form').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('.form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!status) return;
+
+      const data = new FormData(form);
+      const project = form.dataset.project ?? '';
+      const rawMessage = String(data.get('message') ?? '').trim();
+      const payload = {
+        name: data.get('name'),
+        phone: data.get('phone'),
+        productType: form.dataset.productType,
+        message: project ? `[${project}] ${rawMessage}` : rawMessage,
+        website: data.get('website'),
+      };
+
+      const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      submitBtn && (submitBtn.disabled = true);
+      status.textContent = 'Đang gửi...';
+      status.className = 'form-status';
+
+      try {
+        const res = await fetch('/api/lien-he', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error('request_failed');
+
+        form.reset();
+        status.textContent = 'Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.';
+        status.className = 'form-status success';
+      } catch {
+        status.textContent = 'Có lỗi xảy ra, vui lòng gọi trực tiếp hotline hoặc thử lại sau.';
+        status.className = 'form-status error';
+      } finally {
+        submitBtn && (submitBtn.disabled = false);
+      }
+    });
+  });
+</script>
+
+<style>
+  .lead-form-card {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: 0 8px 24px rgba(65, 54, 30, 0.08);
+    max-width: 520px;
+    margin: 2.5rem auto 0;
+  }
+
+  .lead-form-card h2 {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .field {
+    margin-bottom: 1.1rem;
+  }
+
+  .field label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--color-primary-dark);
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 0.7em 0.9em;
+    border: 1px solid rgba(65, 54, 30, 0.25);
+    border-radius: calc(var(--radius) - 4px);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text);
+    background: #fff;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+
+  .field textarea {
+    resize: vertical;
+  }
+
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .lead-form button[type='submit'] {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-status {
+    display: block;
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .form-status.success {
+    color: #3d6b3d;
+  }
+
+  .form-status.error {
+    color: #a33b3b;
+  }
+</style>

@@ -38,6 +38,22 @@ const pageSchema = ({ image }: SchemaContext) =>
         })
       )
       .optional(),
+    // Renders as a "Giá tham khảo" table after the gallery/gallery_groups
+    // images (unlike the sections above, prose content can't be placed
+    // after those, since they always render at the very end of <Content />).
+    price_table: z
+      .array(
+        z.object({
+          label: z.string(),
+          price: z.string(),
+        })
+      )
+      .optional(),
+    // Renders as a "Chính sách bán hàng" bullet list after price_table.
+    sales_policy: z.array(z.string()).optional(),
+    // Shows an embedded lead-capture form (posts to /api/lien-he) at the
+    // very end of the page when set, titled with this text.
+    lead_form_title: z.string().optional(),
   });
 
 const pages = defineCollection({
