@@ -73,10 +73,6 @@ collections:
             media_folder: "public/videos"
             public_folder: "/videos"
           - { label: "Nội dung", name: "body", widget: "markdown" }
-      - file: "src/content/pages/vi-tri.md"
-        label: "Vị trí"
-        name: "vi-tri"
-        fields: *page_fields
       - file: "src/content/pages/lien-he.md"
         label: "Liên hệ"
         name: "lien-he"

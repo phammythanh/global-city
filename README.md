@@ -28,7 +28,7 @@ src/
   content/
     config.ts          content collection schemas
     settings/site.yml   contact info + default SEO (single "file" collection)
-    pages/*.md          Tổng quan / Vị trí / Liên hệ
+    pages/*.md          Tổng quan / Liên hệ
     thap-tang/*.md      SOHO, SOLA (folder collection, fixed set of files)
     cao-tang/*.md       Masteri Grand View / Lumière Midtown / Masteri Park
                          Place / Masteri Cosmo Central / Masteri Cosmo
@@ -54,7 +54,6 @@ cms-oauth-worker/        standalone Cloudflare Worker, GitHub OAuth for Decap
 | Route                                  | Menu                              | Source                                              |
 | --------------------------------------- | ---------------------------------- | ---------------------------------------------------- |
 | `/`                                      | Tổng quan                          | `src/content/pages/tong-quan.md`                     |
-| `/vi-tri`                                 | Vị trí                             | `src/content/pages/vi-tri.md`                        |
 | `/thap-tang`                              | Thấp tầng (dropdown)               | overview, cards → SOHO / SOLA                        |
 | `/thap-tang/soho`, `/thap-tang/sola`      | ↳ SOHO, SOLA                       | `src/content/thap-tang/*.md`                         |
 | `/cao-tang`                                | Cao tầng (dropdown)                 | overview, cards → 5 dự án bên dưới                   |
@@ -112,7 +111,7 @@ and its id is in `wrangler.toml`.
 
 ## Brand
 
-- Primary `#886848` · Accent `#A89878` · Nền `#F8F8F8`
+- Primary `#A78948` · Accent `#A89878` · Nền `#F8F8F8`
 - Text thường `#2B2B2B` · Text trên nền tối `#FFFFFF`
 - Heading: **Cera Black** · Body: Be Vietnam Pro (loaded via Google Fonts in
   `src/layouts/BaseLayout.astro`)
