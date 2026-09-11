@@ -178,6 +178,12 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     border-radius: calc(var(--radius) - 4px);
   }
 
+  .floorplan-gallery:not(.is-stacked) .gallery-item :global(img) {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
   .caption {
     display: block;
     margin-top: 0.5rem;

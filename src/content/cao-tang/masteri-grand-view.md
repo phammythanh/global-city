@@ -36,14 +36,14 @@ gallery_groups:
   - label: Tiện ích nội khu
     layout: grid-2
     items:
-      - image: ./images/masteri-grand-view/tien-ich-ho-boi.webp
-        caption: Hồ bơi phong cách nghỉ dưỡng
-      - image: ./images/masteri-grand-view/tien-ich-gym-yoga.webp
-        caption: Khu gym & yoga
+      - image: ./images/masteri-grand-view/tien-ich-gym.webp
+        caption: Phòng gym
+      - image: ./images/masteri-grand-view/tien-ich-sanh-don.webp
+        caption: Sảnh đón
       - image: ./images/masteri-grand-view/tien-ich-vui-choi-tre-em.webp
         caption: Khu vui chơi trẻ em
-      - image: ./images/masteri-grand-view/tien-ich-bbq.webp
-        caption: Khu BBQ ngoài trời
+      - image: ./images/masteri-grand-view/tien-ich-ho-boi.webp
+        caption: Hồ bơi vô cực
 price_table:
   - label: 1 phòng ngủ
     price: 5 - 6 tỷ đồng
