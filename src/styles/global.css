@@ -14,14 +14,16 @@
 
 :root {
   --color-primary: #a78948;
-  --color-primary-dark: #2b2b2b;
-  --color-accent: #886848;
+  --color-primary-dark: #41361e;
+  --color-accent: #66542c;
+  --color-accent-dark: #41361e;
   --color-bg: #f8f8f8;
   --color-surface: #ffffff;
-  --color-text: #2b2b2b;
-  --color-text-muted: #a89878;
+  --color-text: #41361e;
+  --color-text-muted: #b8a782;
+  --color-tint: #b8a782;
   --color-on-dark: #ffffff;
-  --color-footer-bg: #886848;
+  --color-footer-bg: #66542c;
   --font-heading: 'Cera Black', 'Montserrat', system-ui, sans-serif;
   --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
   --container-width: 1180px;
@@ -113,12 +115,12 @@ img {
 }
 
 .btn-primary {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: #94866a;
+  background: var(--color-accent);
 }
 
 .btn-outline {
@@ -154,14 +156,14 @@ img {
 
 .prose th,
 .prose td {
-  border: 1px solid rgba(43, 43, 43, 0.2);
+  border: 1px solid rgba(65, 54, 30, 0.2);
   padding: 0.65em 1em;
   text-align: left;
   vertical-align: top;
 }
 
 .prose th {
-  background: rgba(43, 43, 43, 0.08);
+  background: rgba(65, 54, 30, 0.08);
   font-family: var(--font-heading);
   font-weight: 600;
   color: var(--color-primary-dark);
@@ -169,7 +171,7 @@ img {
 }
 
 .prose tbody tr:nth-child(even) {
-  background: rgba(43, 43, 43, 0.04);
+  background: rgba(65, 54, 30, 0.04);
 }
 
 .tabs {
@@ -195,7 +197,7 @@ img {
   font-weight: 600;
   font-size: 0.9rem;
   background: var(--color-surface);
-  border: 1px solid rgba(43, 43, 43, 0.2);
+  border: 1px solid rgba(65, 54, 30, 0.2);
   border-radius: 999px;
   padding: 0.65rem 1.4rem;
   color: var(--color-text-muted);

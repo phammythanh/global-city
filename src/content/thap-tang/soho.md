@@ -7,18 +7,6 @@ seo_description: SOHO - phân khu nhà phố thương mại 13,5 ha tại The Gl
 hero_image: ./images/soho/banner.webp
 hero_image_alt: SOHO - Khu nhà phố thương mại tại The Global City
 gallery_groups:
-  - label: Phối cảnh sản phẩm
-    items:
-      - image: ./images/soho/nha-pho-1a.webp
-        caption: Nhà phố 1A
-      - image: ./images/soho/nha-pho-1b.webp
-        caption: Nhà phố 1B-2A-2C
-      - image: ./images/soho/nha-pho-1c.webp
-        caption: Nhà phố 1C-4A
-      - image: ./images/soho/nha-pho-1d.webp
-        caption: Nhà phố 1D
-      - image: ./images/soho/nha-pho-3a.webp
-        caption: Nhà phố 3A-3C
   - label: Tiện ích nội khu
     items:
       - image: ./images/soho/tien-ich-pho-thuong-mai.webp
@@ -34,6 +22,8 @@ gallery_groups:
 ---
 
 SOHO là phân khu nhà phố thương mại (shophouse) sôi động và sầm uất bậc nhất tại The Global City, toạ lạc ngay vị trí trung tâm của đại đô thị. Phân khu được thiết kế theo chuẩn mực quốc tế, hướng đến trở thành điểm đến mua sắm, ẩm thực và giải trí hàng đầu khu vực.
+
+![SOHO - Biểu tượng trung tâm, chuẩn sống toàn cầu](./images/soho/banner-2.webp)
 
 ### 1. Quy mô và quy hoạch
 
@@ -65,9 +55,9 @@ SOHO vận hành theo mô hình "all-in-one", tích hợp đầy đủ dịch v�
 | Vị trí | Khu đô thị The Global City, mặt tiền đường Đỗ Xuân Hợp và cao tốc TP.HCM – Long Thành – Dầu Giây |
 | Chủ đầu tư | Masterise Homes |
 | Tổng diện tích | 13,5 ha |
-| Tổng số căn | 925 căn |
+| Tổng số căn | 915 căn |
 | Mật độ xây dựng | 38% |
-| Dự kiến bàn giao | 2023 |
+| Bàn giao | 2024, đã có sổ hồng |
 | Nhà thầu chính | An Phong |
 | Loại dự án | Dự án thấp tầng |
 | Loại hình sản phẩm | Nhà phố thương mại 1A, 1B, 1C, 1D, 2A, 2B |
@@ -76,14 +66,10 @@ SOHO vận hành theo mô hình "all-in-one", tích hợp đầy đủ dịch v�
 
 ![Mặt bằng tổng quan SOHO](./images/soho/mat-bang-tong-quan.webp)
 
-## Sản phẩm
+## Mặt bằng căn
 
-| Loại | Diện tích | Số lượng | Giá bán tham khảo |
-| --- | --- | --- | --- |
-| Nhà phố 1A | 95,0 m² | 146 căn | 31 - 72 tỷ đồng |
-| Nhà phố 1B-2A-2C | 95,0 - 133,0 m² | 255 căn | 31 - 72 tỷ đồng |
-| Nhà phố 1C-4A | 92,0 - 95,0 m² | 210 căn | 31 - 72 tỷ đồng |
-| Nhà phố 1D | 95,0 m² | 164 căn | 31 - 72 tỷ đồng |
-| Nhà phố 3A-3C | 139,5 - 141,0 m² | 17 căn | 31 - 72 tỷ đồng |
+![Mặt bằng căn SOHO - Type 1A, Type 1B](./images/soho/mat-bang-can-1a-1b.webp)
 
-*Giá bán mang tính chất tham khảo, liên hệ hotline để được cập nhật bảng hàng và chính sách mới nhất.*
+![Mặt bằng căn SOHO - Type 1C, Type 1D](./images/soho/mat-bang-can-1c-1d.webp)
+
+![Mặt bằng căn SOHO - Type 2C, Type 3A](./images/soho/mat-bang-can-2c-3a.webp)

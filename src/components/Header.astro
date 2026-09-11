@@ -126,8 +126,8 @@ const { phone } = Astro.props;
     position: sticky;
     top: 0;
     z-index: 40;
-    background: var(--color-bg);
-    border-bottom: 1px solid rgba(43, 43, 43, 0.15);
+    background: var(--color-accent);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .bar {
@@ -161,15 +161,15 @@ const { phone } = Astro.props;
     font-weight: 500;
     font-size: 0.95rem;
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--color-on-dark);
     padding-block: 0.25rem;
     border-bottom: 2px solid transparent;
   }
 
   .nav a:hover,
   .nav a[aria-current='page'] {
-    color: var(--color-primary-dark);
-    border-color: var(--color-accent);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
   }
 
   .nav-item {
@@ -186,7 +186,7 @@ const { phone } = Astro.props;
     border: none;
     padding: 0.25rem;
     margin-left: 0.15rem;
-    color: var(--color-text);
+    color: var(--color-on-dark);
     cursor: pointer;
   }
 
@@ -210,7 +210,7 @@ const { phone } = Astro.props;
     padding: 0.4rem;
     background: var(--color-surface);
     border-radius: calc(var(--radius) - 4px);
-    box-shadow: 0 12px 28px rgba(43, 43, 43, 0.14);
+    box-shadow: 0 12px 28px rgba(65, 54, 30, 0.14);
     min-width: 15rem;
   }
 
@@ -220,6 +220,9 @@ const { phone } = Astro.props;
     border: none;
     border-radius: calc(var(--radius) - 6px);
     white-space: nowrap;
+    /* Override the header's on-dark nav link color - this menu floats on
+       a light --color-surface card regardless of the header's own bg. */
+    color: var(--color-text);
   }
 
   .dropdown-menu a:hover {
@@ -259,7 +262,7 @@ const { phone } = Astro.props;
   .burger span {
     width: 22px;
     height: 2px;
-    background: var(--color-primary-dark);
+    background: var(--color-on-dark);
   }
 
   @media (max-width: 860px) {
@@ -267,8 +270,8 @@ const { phone } = Astro.props;
       position: absolute;
       inset-inline: 0;
       top: 100%;
-      background: var(--color-bg);
-      border-bottom: 1px solid rgba(43, 43, 43, 0.15);
+      background: var(--color-accent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       display: none;
     }
 
@@ -311,8 +314,11 @@ const { phone } = Astro.props;
       display: block;
     }
 
+    /* Transparent on mobile (see .dropdown-menu above), so it shows the
+       dark --color-accent nav bg behind it - needs light text, not the
+       dark --color-text used for the floating desktop card version. */
     .dropdown-menu a {
-      color: var(--color-text-muted);
+      color: var(--color-on-dark);
       padding-block: 0.45rem;
     }
 
