@@ -17,6 +17,8 @@ Nằm dọc trục đường Song Hành – Đỗ Xuân Hợp thuộc phường 
 
 Dự án có bốn mặt tiếp giáp rõ ràng: phía Đông giáp đường Đỗ Xuân Hợp, phía Tây giáp khu đô thị Sài Gòn Sports City, phía Nam giáp cao tốc TP.HCM – Long Thành – Dầu Giây, phía Bắc giáp rạch Chiếc. Nhờ vị trí này, The Global City chỉ cách khu Thảo Điền khoảng 5 phút di chuyển, cách trung tâm Thủ Thiêm khoảng 10 phút, cách chợ Bến Thành 15–20 phút, và cách hai sân bay Tân Sơn Nhất và Long Thành (tương lai) khoảng 30 phút — một vị trí kết nối thuận tiện tới hầu hết các khu vực trọng điểm của TP.HCM.
 
+![Sơ đồ vị trí The Global City](./images/tong-quan/so-do-vi-tri.webp)
+
 ### Thông số & quy mô
 
 - **Tổng diện tích:** 117,4 ha
