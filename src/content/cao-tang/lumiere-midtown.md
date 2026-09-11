@@ -29,26 +29,26 @@ gallery_groups:
         caption: Duplex
   - label: Tiện ích nội khu
     items:
+      - image: ./images/lumiere-midtown/tien-ich-sanh-don.webp
+        caption: Sảnh đón
+      - image: ./images/lumiere-midtown/tien-ich-sanh-cho.webp
+        caption: Sảnh chờ
       - image: ./images/lumiere-midtown/tien-ich-gym.webp
         caption: Phòng gym
-      - image: ./images/lumiere-midtown/tien-ich-sanh-don.webp
-        caption: Sảnh tiếp đón
+      - image: ./images/lumiere-midtown/tien-ich-phong-choi-game.webp
+        caption: Phòng chơi game, giải trí
       - image: ./images/lumiere-midtown/tien-ich-vui-choi-trong-nha.webp
         caption: Khu vui chơi trẻ em trong nhà
-      - image: ./images/lumiere-midtown/tien-ich-phong-choi-game.webp
-        caption: Phòng chơi game
-      - image: ./images/lumiere-midtown/tien-ich-gap-go-ngoai-troi.webp
-        caption: Không gian gặp gỡ, trò chuyện ngoài trời
-      - image: ./images/lumiere-midtown/tien-ich-vuon-thu-gian.webp
-        caption: Vườn thư giãn trên cao
-      - image: ./images/lumiere-midtown/tien-ich-yoga-thien.webp
-        caption: Không gian yoga & thiền
-      - image: ./images/lumiere-midtown/tien-ich-san-choi-tre-em.webp
-        caption: Sân chơi trẻ em ngoài trời
-      - image: ./images/lumiere-midtown/tien-ich-sinh-hoat-gia-dinh.webp
-        caption: Không gian sinh hoạt gia đình
-      - image: ./images/lumiere-midtown/tien-ich-canh-dong-dieu.webp
-        caption: Cánh đồng diều - The Global City
+      - image: ./images/lumiere-midtown/tien-ich-bbq.webp
+        caption: Khu BBQ sân thượng
+      - image: ./images/lumiere-midtown/tien-ich-xich-du-ngoai-troi.webp
+        caption: Không gian xích đu, thư giãn ngoài trời
+      - image: ./images/lumiere-midtown/tien-ich-ho-boi.webp
+        caption: Hồ bơi ngoài trời
+      - image: ./images/lumiere-midtown/tien-ich-quang-truong.webp
+        caption: Quảng trường thương mại
+      - image: ./images/lumiere-midtown/tien-ich-pho-thuong-mai.webp
+        caption: Phố thương mại nội khu
 price_table:
   - label: 1 phòng ngủ
     price: 7 - 8 tỷ đồng
@@ -65,6 +65,8 @@ price_table:
 ---
 
 Lumière Midtown (phân khu CT4) kết hợp nhịp sống năng động của một trung tâm kinh tế mới với sự riêng tư của một tổ ấm cao cấp, kế thừa triết lý thiết kế bền vững chung của The Global City.
+
+![Lumière Midtown - The Global City](./images/lumiere-midtown/phoi-canh-intro.webp)
 
 ### 1. Vị trí "trái tim" đại đô thị
 
