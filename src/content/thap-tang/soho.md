@@ -6,8 +6,16 @@ seo_description: SOHO - phân khu nhà phố thương mại 13,5 ha tại The Gl
   tham khảo. Liên hệ 0903 596 692.
 hero_image: ./images/soho/banner.webp
 hero_image_alt: SOHO - Khu nhà phố thương mại tại The Global City
+gallery:
+  - image: ./images/soho/mat-bang-can-1a-1b.webp
+    caption: Type 1A, Type 1B
+  - image: ./images/soho/mat-bang-can-1c-1d.webp
+    caption: Type 1C, Type 1D
+  - image: ./images/soho/mat-bang-can-2c-3a.webp
+    caption: Type 2C, Type 3A
 gallery_groups:
   - label: Công viên nội khu
+    layout: grid-2
     items:
       - image: ./images/soho/cong-vien-cover.webp
         caption: 3 công viên, 3 nhịp sống tại SOHO
@@ -65,9 +73,3 @@ SOHO vận hành theo mô hình "all-in-one", tích hợp đầy đủ dịch v�
 ![Mặt bằng tổng quan SOHO](./images/soho/mat-bang-tong-quan.webp)
 
 ## Mặt bằng căn
-
-![Mặt bằng căn SOHO - Type 1A, Type 1B](./images/soho/mat-bang-can-1a-1b.webp)
-
-![Mặt bằng căn SOHO - Type 1C, Type 1D](./images/soho/mat-bang-can-1c-1d.webp)
-
-![Mặt bằng căn SOHO - Type 2C, Type 3A](./images/soho/mat-bang-can-2c-3a.webp)

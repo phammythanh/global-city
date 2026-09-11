@@ -9,9 +9,9 @@ interface GalleryItem {
 
 interface Props {
   items: GalleryItem[];
-  /** "grid" (default) shows small thumbnails in a grid; "stacked" shows
-   * each image full-width, one below another. */
-  layout?: 'grid' | 'stacked';
+  /** "grid" (default) auto-fills small thumbnails; "grid-2" fixes it at
+   * 2 columns; "stacked" shows each image full-width, one below another. */
+  layout?: 'grid' | 'grid-2' | 'stacked';
 }
 
 const { items, layout = 'grid' } = Astro.props;
@@ -27,7 +27,14 @@ const fullImages = await Promise.all(
 const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
 ---
 
-<div class:list={['floorplan-gallery', layout === 'stacked' && 'is-stacked']} data-gallery-root={uid}>
+<div
+  class:list={[
+    'floorplan-gallery',
+    layout === 'stacked' && 'is-stacked',
+    layout === 'grid-2' && 'is-grid-2',
+  ]}
+  data-gallery-root={uid}
+>
   {
     items.map((item, i) => (
       <button
@@ -127,6 +134,16 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     gap: 1.5rem;
   }
 
+  .floorplan-gallery.is-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    .floorplan-gallery.is-grid-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .gallery-item {
     display: flex;
     flex-direction: column;
@@ -179,8 +196,11 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     max-height: 78vh;
     overflow: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* "safe" falls back to start-alignment once the (zoomed) image
+       overflows, instead of clipping off both edges around a centered
+       image the container refuses to let you scroll to. */
+    align-items: safe center;
+    justify-content: safe center;
   }
 
   .lightbox-img {

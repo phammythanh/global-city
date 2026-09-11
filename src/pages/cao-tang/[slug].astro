@@ -35,7 +35,7 @@ const { Content } = await render(item);
     item.data.gallery_groups?.map((group) => (
       <div class="gallery-group">
         <h2>{group.label}</h2>
-        <FloorPlanGallery items={group.items} />
+        <FloorPlanGallery items={group.items} layout={group.layout} />
       </div>
     ))
   }

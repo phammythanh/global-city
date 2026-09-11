@@ -88,8 +88,11 @@
     max-height: 90vh;
     overflow: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* "safe" falls back to start-alignment once the (zoomed) image
+       overflows, instead of clipping off both edges around a centered
+       image the container refuses to let you scroll to. */
+    align-items: safe center;
+    justify-content: safe center;
   }
 
   .global-lightbox-img {

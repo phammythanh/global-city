@@ -26,6 +26,9 @@ const pageSchema = ({ image }: SchemaContext) =>
       .array(
         z.object({
           label: z.string(),
+          // Defaults to the gallery's usual auto-fill grid; "grid-2" fixes
+          // it at 2 columns (e.g. a small, evenly-weighted set of photos).
+          layout: z.enum(['grid', 'grid-2', 'stacked']).optional(),
           items: z.array(
             z.object({
               image: image(),
