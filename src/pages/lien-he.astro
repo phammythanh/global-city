@@ -2,7 +2,6 @@
 import { getEntry, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LeadForm from '../components/LeadForm.astro';
 import { formatPhone } from '../utils/format';
 import danhMucTinhHoaImage from '../content/pages/images/lien-he/danh-muc-tinh-hoa.webp';
 
@@ -47,16 +46,12 @@ function icon(name: keyof typeof ICONS) {
 
       <div class="grid">
         <div class="feature-image">
-          {
-            entry.data.hero_image && (
-              <Image
-                src={entry.data.hero_image}
-                alt={entry.data.hero_image_alt ?? entry.data.title}
-                width={800}
-                height={1000}
-              />
-            )
-          }
+          <Image
+            src={danhMucTinhHoaImage}
+            alt="Danh mục bất động sản tinh hoa tại The Global City 2026"
+            width={800}
+            height={1187}
+          />
         </div>
 
         <form id="contact-form" novalidate>
@@ -98,18 +93,6 @@ function icon(name: keyof typeof ICONS) {
           <button type="submit" class="btn btn-primary">Gửi</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="section soho-section">
-    <div class="container">
-      <h2>Tham quan nhà mẫu SOHO</h2>
-      <div class="grid">
-        <LeadForm title="Đăng ký tham quan nhà mẫu SOHO" productType="Thấp tầng" projectName="SOHO" />
-        <div class="feature-image">
-          <Image src={danhMucTinhHoaImage} alt="Danh mục bất động sản tinh hoa tại The Global City 2026" width={800} height={1187} />
-        </div>
       </div>
     </div>
   </section>
@@ -323,12 +306,4 @@ function icon(name: keyof typeof ICONS) {
     }
   }
 
-  .soho-section {
-    background: var(--color-bg);
-    border-top: 1px solid rgba(65, 54, 30, 0.1);
-  }
-
-  .soho-section h2 {
-    text-align: center;
-  }
 </style>
