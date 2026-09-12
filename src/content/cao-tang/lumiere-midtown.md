@@ -1,7 +1,7 @@
 ---
 title: Lumière Midtown
 seo_title: Lumière Midtown - Căn hộ cao tầng tại The Global City
-seo_description: Lumière Midtown (phân khu CT4) - căn hộ cao tầng tại The
+seo_description: Lumière Midtown (phân khu CT7) - căn hộ cao tầng tại The
   Global City, thiết kế bởi Foster + Partners. 1PN-4PN, Duplex, Penthouse.
   Liên hệ 0903 596 692.
 hero_image: ./images/lumiere-midtown/banner.webp
@@ -64,13 +64,13 @@ price_table:
     price: 31 - 62 tỷ đồng
 ---
 
-Lumière Midtown (phân khu CT4) kết hợp nhịp sống năng động của một trung tâm kinh tế mới với sự riêng tư của một tổ ấm cao cấp, kế thừa triết lý thiết kế bền vững chung của The Global City.
+Lumière Midtown (phân khu CT7) kết hợp nhịp sống năng động của một trung tâm kinh tế mới với sự riêng tư của một tổ ấm cao cấp, kế thừa triết lý thiết kế bền vững chung của The Global City.
 
 ![Lumière Midtown - The Global City](./images/lumiere-midtown/phoi-canh-intro.webp)
 
 ### 1. Vị trí "trái tim" đại đô thị
 
-- Toạ lạc tại phân khu CT4, phường An Phú, TP. Thủ Đức
+- Toạ lạc tại phân khu CT7, phường An Phú, TP. Thủ Đức
 - Tầm nhìn hướng ra hệ thống kênh đào nhạc nước và công viên cây xanh
 
 ### 2. Kiến trúc và quy hoạch xanh
@@ -93,7 +93,7 @@ Lumière Midtown (phân khu CT4) kết hợp nhịp sống năng động của m
 | Thông tin | Chi tiết |
 | --- | --- |
 | Tên dự án | Lumière Midtown |
-| Vị trí | Đường Đỗ Xuân Hợp (phân khu CT4), Khu đô thị The Global City |
+| Vị trí | Đường Đỗ Xuân Hợp (phân khu CT7), Khu đô thị The Global City |
 | Chủ đầu tư | Masterise Homes |
 | Tổng diện tích | 1,65 ha |
 | Tổng số căn | 808 căn |
