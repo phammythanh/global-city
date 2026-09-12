@@ -28,18 +28,18 @@ gallery_groups:
         caption: 4 phòng ngủ & Penthouse
   - label: Tiện ích nội khu
     items:
-      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-sanh.webp
-        caption: Sảnh đón sang trọng chuẩn khách sạn 5 sao
-      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-ho-boi.webp
-        caption: Hồ bơi vô cực & Spa
-      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-gym-yoga.webp
-        caption: Phòng Gym & Yoga cao cấp
-      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-coworking.webp
-        caption: Co-working Space & Lounge ngoài trời
-      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-bbq.webp
-        caption: Khu BBQ, Picnic
-      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-cong-vien-ven-song.webp
-        caption: Công viên ven sông & đường dạo bộ
+      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-sanh-cu-dan.webp
+        caption: Sảnh cư dân
+      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-sanh-cho-thang-may.webp
+        caption: Sảnh chờ thang máy
+      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-business-lounge.webp
+        caption: Business Lounge
+      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-yoga.webp
+        caption: Phòng Yoga
+      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-teen-club.webp
+        caption: Teen Club
+      - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-kid-playground.webp
+        caption: Kid Playground
 price_table:
   - label: 1 phòng ngủ
     price: 7 tỷ đồng
