@@ -33,6 +33,15 @@ const finalDescription =
       rel="stylesheet"
     />
     <SEO title={title} description={finalDescription} image={ogImage} type={ogType} rawTitle={rawTitle} />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-STJD213YEJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-STJD213YEJ');
+    </script>
   </head>
   <body>
     <Header phone={site?.data.phone ?? ''} />
