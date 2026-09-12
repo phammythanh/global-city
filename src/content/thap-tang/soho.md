@@ -25,6 +25,7 @@ gallery_groups:
         caption: The Square - Sống năng động
       - image: ./images/soho/cong-vien-the-playground.webp
         caption: The Playground - Sống tận hưởng
+lead_form_title: Đăng ký tham quan nhà mẫu SOHO
 ---
 
 SOHO là phân khu nhà phố thương mại (shophouse) sôi động và sầm uất bậc nhất tại The Global City, toạ lạc ngay vị trí trung tâm của đại đô thị. Phân khu được thiết kế theo chuẩn mực quốc tế, hướng đến trở thành điểm đến mua sắm, ẩm thực và giải trí hàng đầu khu vực.
