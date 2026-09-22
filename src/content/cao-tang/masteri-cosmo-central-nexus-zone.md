@@ -5,27 +5,47 @@ seo_description: Nexus Zone (Tòa B1, B2) thuộc Masteri Cosmo Central (CT3) t�
   The Global City. 1PN-4PN, Penthouse. Liên hệ 0903 596 692.
 hero_image: ./images/masteri-cosmo-central-nexus-zone/banner.webp
 hero_image_alt: Masteri Cosmo Central Nexus Zone - The Global City
-gallery:
-  - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b1.webp
-    caption: Mặt bằng tầng điển hình - Tòa B1 (tầng 5-15)
-  - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b2.webp
-    caption: Mặt bằng tầng điển hình - Tòa B2 (tầng 12B-17)
+floor_plan_tabs:
+  - label: Tháp A
+    items:
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-a-tang-4.webp
+        caption: Tầng 4 (3A)
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-a-tang-5-15.webp
+        caption: Tầng 5-15
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-a-tang-16.webp
+        caption: Tầng 16
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-a-tang-17.webp
+        caption: Tầng 17
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-a-tang-18-27.webp
+        caption: Tầng 18-27
+  - label: Tháp B1
+    items:
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b1-tang-4.webp
+        caption: Tầng 4 (3A)
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b1-tang-5-15.webp
+        caption: Tầng 5-15
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b1-tang-16.webp
+        caption: Tầng 16
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b1-tang-17.webp
+        caption: Tầng 17
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b1-tang-18-23.webp
+        caption: Tầng 18-23
+  - label: Tháp B2
+    items:
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b2-tang-4.webp
+        caption: Tầng 4 (3A)
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b2-tang-5-12.webp
+        caption: Tầng 5-12
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b2-tang-13.webp
+        caption: Tầng 13 (12A)
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-toa-b2-tang-14-17.webp
+        caption: Tầng 14 (12B) - 17
 gallery_groups:
   - label: Loại hình căn hộ
-    layout: grid-2
+    layout: stacked
     items:
-      - image: ./images/masteri-cosmo-central-nexus-zone/can-ho-1pn.webp
-        caption: 1 phòng ngủ
-      - image: ./images/masteri-cosmo-central-nexus-zone/can-ho-1pn-plus.webp
-        caption: 1 phòng ngủ+
-      - image: ./images/masteri-cosmo-central-nexus-zone/can-ho-2pn.webp
-        caption: 2 phòng ngủ
-      - image: ./images/masteri-cosmo-central-nexus-zone/can-ho-2pn-plus.webp
-        caption: 2 phòng ngủ+
-      - image: ./images/masteri-cosmo-central-nexus-zone/can-ho-3pn.webp
-        caption: 3 phòng ngủ
-      - image: ./images/masteri-cosmo-central-nexus-zone/can-ho-4pn-penthouse.webp
-        caption: 4 phòng ngủ & Penthouse
+      - image: ./images/masteri-cosmo-central-nexus-zone/mat-bang-can-ho.webp
+        caption: Mặt bằng căn hộ
   - label: Tiện ích nội khu
     items:
       - image: ./images/masteri-cosmo-central-nexus-zone/tien-ich-sanh-cu-dan.webp
@@ -53,7 +73,7 @@ price_table:
     price: 13 - 15 tỷ đồng
 ---
 
-Nexus Zone là hai tòa tháp B1 và B2 thuộc phân khu Masteri Cosmo Central (CT3) tại The Global City - nơi hội tụ và kết nối mọi tiện ích, trải nghiệm sống trong cùng một không gian.
+Nexus Zone là phân khu Masteri Cosmo Central (CT3) gồm 3 tòa tháp A, B1 và B2 tại The Global City - nơi hội tụ và kết nối mọi tiện ích, trải nghiệm sống trong cùng một không gian.
 
 ![Masteri Cosmo Central Nexus Zone - The Global City](./images/masteri-cosmo-central-nexus-zone/phoi-canh-intro.webp)
 
@@ -63,7 +83,7 @@ Nexus Zone là hai tòa tháp B1 và B2 thuộc phân khu Masteri Cosmo Central 
 
 ### 2. Quy mô Nexus Zone
 
-- Gồm 2 tòa tháp B1 (tầng 5-15) và B2 (tầng 12B-17), liền kề tòa A trong cùng phân khu Masteri Cosmo Central
+- Gồm 3 tòa tháp A, B1 và B2 trong cùng phân khu Masteri Cosmo Central (CT3)
 - Đa dạng sản phẩm căn hộ từ 1-4 phòng ngủ và Penthouse, thiết kế tối ưu không gian sống, đón ánh sáng và gió tự nhiên
 
 ### 3. Tiện ích tích hợp
@@ -78,7 +98,7 @@ Nexus Zone là hai tòa tháp B1 và B2 thuộc phân khu Masteri Cosmo Central 
 | Tên dự án | Masteri Cosmo Central - Nexus Zone |
 | Vị trí | Khu đô thị The Global City (phân khu CT3), Đường Đỗ Xuân Hợp |
 | Chủ đầu tư | Masterise Homes |
-| Tòa tháp | Tòa B1, Tòa B2 |
+| Tòa tháp | Tòa A, Tòa B1, Tòa B2 |
 | Dự kiến bàn giao | Quý 3/2028 |
 | Nhà thầu chính | Coteccons và Hòa Bình |
 | Loại dự án | Dự án cao tầng |
