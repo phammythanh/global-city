@@ -71,8 +71,6 @@ SOLA là phân khu thấp tầng dạng compound khép kín duy nhất tại The
 
 ![Hệ thống công viên nội khu SOLA](./images/sola/tien-ich.webp)
 
-![Phối cảnh bán đảo villa SOLA](./images/sola/phoi-canh-intro.webp)
-
 ## Thông tin tổng quan
 
 | Thông tin | Chi tiết |
@@ -87,6 +85,8 @@ SOLA là phân khu thấp tầng dạng compound khép kín duy nhất tại The
 | Nhà thầu chính | Coteccons |
 | Loại dự án | Dự án thấp tầng |
 | Loại hình sản phẩm | Nhà phố liên kế vườn, Biệt thự song lập, Biệt thự đơn lập, Boutique Shop |
+
+![Phối cảnh bán đảo villa SOLA](./images/sola/phoi-canh-intro.webp)
 
 ## Mặt bằng tổng quan
 
