@@ -22,6 +22,22 @@ const pageSchema = ({ image }: SchemaContext) =>
         })
       )
       .optional(),
+    // Alternative to the flat "gallery" for "Mặt bằng tầng": a tab per
+    // tower, each with its own set of floor-plan images (e.g. Tháp A,
+    // Tháp B1, Tháp B2). When set, this renders instead of "gallery".
+    floor_plan_tabs: z
+      .array(
+        z.object({
+          label: z.string(),
+          items: z.array(
+            z.object({
+              image: image(),
+              caption: z.string().optional(),
+            })
+          ),
+        })
+      )
+      .optional(),
     gallery_groups: z
       .array(
         z.object({

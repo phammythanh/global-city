@@ -1,0 +1,95 @@
+---
+import FloorPlanGallery from './FloorPlanGallery.astro';
+import type { ImageMetadata } from 'astro';
+
+interface GalleryItem {
+  image: ImageMetadata;
+  caption?: string;
+}
+
+interface Props {
+  tabs: { label: string; items: GalleryItem[] }[];
+}
+
+const { tabs } = Astro.props;
+
+const uid = `fpt-${Math.random().toString(36).slice(2, 10)}`;
+---
+
+<div class="floorplan-tabs" data-tabs-root={uid}>
+  <div class="tab-buttons" role="tablist">
+    {
+      tabs.map((tab, i) => (
+        <button type="button" class:list={['tab-btn', i === 0 && 'is-active']} data-tab-index={i} role="tab" aria-selected={i === 0}>
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    tabs.map((tab, i) => (
+      <div class="tab-panel" data-tab-panel={i} hidden={i !== 0}>
+        <FloorPlanGallery items={tab.items} layout="stacked" />
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.floorplan-tabs[data-tabs-root]').forEach((root) => {
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('.tab-btn'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('.tab-panel'));
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const index = btn.dataset.tabIndex;
+        buttons.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-selected', String(active));
+        });
+        panels.forEach((p) => {
+          p.hidden = p.dataset.tabPanel !== index;
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .floorplan-tabs {
+    margin: 1.5rem 0;
+  }
+
+  .tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(65, 54, 30, 0.15);
+  }
+
+  .tab-btn {
+    padding: 0.7em 1.4em;
+    border: none;
+    background: transparent;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .tab-btn:hover {
+    color: var(--color-primary);
+  }
+
+  .tab-btn.is-active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+</style>

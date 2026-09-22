@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
 import FloorPlanGallery from '../../components/FloorPlanGallery.astro';
+import FloorPlanTabs from '../../components/FloorPlanTabs.astro';
 import LeadForm from '../../components/LeadForm.astro';
 
 export async function getStaticPaths() {
@@ -30,7 +31,13 @@ const { Content } = await render(item);
   }
   <Content />
 
-  {item.data.gallery && <FloorPlanGallery items={item.data.gallery} layout="stacked" />}
+  {
+    item.data.floor_plan_tabs ? (
+      <FloorPlanTabs tabs={item.data.floor_plan_tabs} />
+    ) : (
+      item.data.gallery && <FloorPlanGallery items={item.data.gallery} layout="stacked" />
+    )
+  }
 
   {
     item.data.gallery_groups?.map((group) => (

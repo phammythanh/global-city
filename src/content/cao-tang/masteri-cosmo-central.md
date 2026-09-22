@@ -5,13 +5,41 @@ seo_description: Masteri Cosmo Central (CT4) - căn hộ cao tầng tại lõi t
   tâm The Global City. 1PN-4PN, Duplex, Penthouse. Liên hệ 0903 596 692.
 hero_image: ./images/masteri-cosmo-central/banner.webp
 hero_image_alt: Masteri Cosmo Central - The Global City
-gallery:
-  - image: ./images/masteri-cosmo-central/mat-bang-toa-a.webp
-    caption: Mặt bằng tầng điển hình - Tòa A
-  - image: ./images/masteri-cosmo-central/mat-bang-toa-b1.webp
-    caption: Mặt bằng tầng điển hình - Tòa B1
-  - image: ./images/masteri-cosmo-central/mat-bang-toa-b2.webp
-    caption: Mặt bằng tầng điển hình - Tòa B2
+floor_plan_tabs:
+  - label: Tháp A
+    items:
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-a-tang-4.webp
+        caption: Tầng 4 (3A)
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-a-tang-5-17.webp
+        caption: Tầng 5-17
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-a-tang-18.webp
+        caption: Tầng 18
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-a-tang-19.webp
+        caption: Tầng 19
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-a-tang-20-27.webp
+        caption: Tầng 20-27
+  - label: Tháp B1
+    items:
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b1-tang-4.webp
+        caption: Tầng 4 (3A)
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b1-tang-5-17.webp
+        caption: Tầng 5-17
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b1-tang-18.webp
+        caption: Tầng 18
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b1-tang-19.webp
+        caption: Tầng 19
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b1-tang-20-23.webp
+        caption: Tầng 20-23
+  - label: Tháp B2
+    items:
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b2-tang-4.webp
+        caption: Tầng 4 (3A)
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b2-tang-5-12.webp
+        caption: Tầng 5-12
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b2-tang-13.webp
+        caption: Tầng 13 (12A)
+      - image: ./images/masteri-cosmo-central/mat-bang-toa-b2-tang-14-17.webp
+        caption: Tầng 14 (12B) - 17
 gallery_groups:
   - label: Loại hình căn hộ
     layout: grid-2
