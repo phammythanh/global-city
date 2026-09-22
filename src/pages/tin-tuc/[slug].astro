@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Image, getImage } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -29,14 +29,6 @@ const ogImage = post.data.cover
     <div class="container prose">
       <p class="date">{post.data.date.toLocaleDateString('vi-VN')}</p>
       <h1>{post.data.title}</h1>
-      {post.data.cover && (
-        <Image
-          src={post.data.cover}
-          alt={post.data.cover_alt ?? post.data.title}
-          width={1200}
-          height={630}
-        />
-      )}
       <Content />
       <p><a href="/tin-tuc">← Quay lại Tin tức</a></p>
     </div>
