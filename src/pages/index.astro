@@ -25,3 +25,14 @@ const { Content } = await render(entry);
 
   <Content />
 </PageLayout>
+
+<style>
+  /* Project pages (SOHO, SOLA, Masteri...) widen their .prose to 960px
+     via a :has(.floorplan-gallery) rule, since they all include a
+     FloorPlanGallery. This page has no gallery, so it never gets that
+     boost and stays at the base 72ch - match it explicitly instead. */
+  :global(.prose) {
+    max-width: 960px;
+    margin-inline: auto;
+  }
+</style>
