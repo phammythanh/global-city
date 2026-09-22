@@ -42,20 +42,10 @@ floor_plan_tabs:
         caption: Tầng 14 (12B) - 17
 gallery_groups:
   - label: Loại hình căn hộ
-    layout: grid-2
+    layout: stacked
     items:
-      - image: ./images/masteri-cosmo-central/can-ho-1pn.webp
-        caption: 1 phòng ngủ
-      - image: ./images/masteri-cosmo-central/can-ho-1pn-plus.webp
-        caption: 1 phòng ngủ+
-      - image: ./images/masteri-cosmo-central/can-ho-2pn.webp
-        caption: 2 phòng ngủ
-      - image: ./images/masteri-cosmo-central/can-ho-2pn-plus.webp
-        caption: 2 phòng ngủ+
-      - image: ./images/masteri-cosmo-central/can-ho-3pn.webp
-        caption: 3 phòng ngủ
-      - image: ./images/masteri-cosmo-central/can-ho-4pn-penthouse.webp
-        caption: 4 phòng ngủ & Penthouse
+      - image: ./images/masteri-cosmo-central/mat-bang-can-ho.webp
+        caption: Mặt bằng căn hộ
   - label: Tiện ích nội khu
     items:
       - image: ./images/masteri-cosmo-central/tien-ich-sanh.webp
