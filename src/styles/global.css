@@ -133,6 +133,21 @@ img {
   max-width: 72ch;
 }
 
+/* Inline <video> dropped straight into markdown body content (raw HTML
+   isn't scoped by Astro, so this must live in the global stylesheet
+   rather than a component's <style> block to actually apply). */
+.intro-video {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin: 0 auto 2rem;
+  border-radius: var(--radius);
+  background: #000;
+  object-fit: cover;
+}
+
 .prose h2 {
   margin-top: 1.4em;
 }

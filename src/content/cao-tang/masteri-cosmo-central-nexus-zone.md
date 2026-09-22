@@ -75,7 +75,7 @@ price_table:
 
 Nexus Zone là phân khu Masteri Cosmo Central (CT3) gồm 3 tòa tháp A, B1 và B2 tại The Global City - nơi hội tụ và kết nối mọi tiện ích, trải nghiệm sống trong cùng một không gian.
 
-![Masteri Cosmo Central Nexus Zone - The Global City](./images/masteri-cosmo-central-nexus-zone/phoi-canh-intro.webp)
+<video class="intro-video" src="/videos/nexus-zone-live-work-play.mp4" controls autoplay muted loop playsinline></video>
 
 ### 1. Vị trí trung tâm kết nối
 
@@ -90,6 +90,8 @@ Nexus Zone là phân khu Masteri Cosmo Central (CT3) gồm 3 tòa tháp A, B1 v�
 
 - **Nội khu:** hồ bơi vô cực, phòng gym, khu sinh hoạt cộng đồng, khu vui chơi trẻ em
 - **Ngoại khu:** kết nối trực tiếp hệ sinh thái tiện ích quy mô lớn của The Global City gồm khu thương mại - dịch vụ, công viên, không gian giải trí và cảnh quan đô thị hiện đại
+
+![Masteri Cosmo Central Nexus Zone - The Global City](./images/masteri-cosmo-central-nexus-zone/phoi-canh-intro.webp)
 
 ## Thông tin tổng quan
 
