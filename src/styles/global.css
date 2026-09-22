@@ -133,6 +133,25 @@ img {
   max-width: 72ch;
 }
 
+/* Embedded YouTube iframe dropped into markdown body content (raw HTML
+   isn't scoped by Astro, so this must live in the global stylesheet to
+   actually apply). No wrapping <div> on purpose - the prebuild content
+   sanitizer (scripts/sanitize-content.mjs) re-serializes a markdown
+   file's whole body as HTML the moment it spots a block tag like
+   div/p/span/table, which mangles hand-authored markdown elsewhere in
+   the same file. iframe/video aren't in that trigger list. */
+.video-embed {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 2rem;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+  border-radius: var(--radius);
+  background: #000;
+}
+
 /* Inline <video> dropped straight into markdown body content (raw HTML
    isn't scoped by Astro, so this must live in the global stylesheet
    rather than a component's <style> block to actually apply). */

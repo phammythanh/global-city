@@ -42,7 +42,7 @@ lead_form_title: Đăng ký tư vấn và check căn Sola
 
 SOLA là phân khu thấp tầng dạng compound khép kín duy nhất tại The Global City, được định vị làm không gian nghỉ dưỡng riêng tư và tĩnh tại - đối lập với nhịp sống sôi động của khu nhà phố thương mại SOHO. Bán đảo SOLA sở hữu ba mặt giáp sông Rạch Chiếc và kênh đào The Canal of Love.
 
-![Phối cảnh bán đảo villa SOLA](./images/sola/phoi-canh-intro.webp)
+<iframe class="video-embed" src="https://www.youtube-nocookie.com/embed/WTvSWwi6JnQ" title="SOLA - The Global City" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 
 ### 1. Quy mô và loại hình sản phẩm
 
@@ -70,6 +70,8 @@ SOLA là phân khu thấp tầng dạng compound khép kín duy nhất tại The
 - **Hệ thống công viên nội khu:** 5 công viên chủ đề - Horizon, Fountain, Luna, Stella, Sol - phục vụ nhu cầu thư giãn, thể thao và kết nối cộng đồng cư dân
 
 ![Hệ thống công viên nội khu SOLA](./images/sola/tien-ich.webp)
+
+![Phối cảnh bán đảo villa SOLA](./images/sola/phoi-canh-intro.webp)
 
 ## Thông tin tổng quan
 
