@@ -16,8 +16,8 @@ const { tabs } = Astro.props;
 const uid = `fpt-${Math.random().toString(36).slice(2, 10)}`;
 ---
 
-<div class="floorplan-tabs" data-tabs-root={uid}>
-  <div class="tab-buttons" role="tablist">
+<div class="tabs" data-tabs-root={uid}>
+  <div class="tab-list" role="tablist">
     {
       tabs.map((tab, i) => (
         <button type="button" class:list={['tab-btn', i === 0 && 'is-active']} data-tab-index={i} role="tab" aria-selected={i === 0}>
@@ -37,7 +37,7 @@ const uid = `fpt-${Math.random().toString(36).slice(2, 10)}`;
 </div>
 
 <script>
-  document.querySelectorAll<HTMLElement>('.floorplan-tabs[data-tabs-root]').forEach((root) => {
+  document.querySelectorAll<HTMLElement>('.tabs[data-tabs-root]').forEach((root) => {
     const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('.tab-btn'));
     const panels = Array.from(root.querySelectorAll<HTMLElement>('.tab-panel'));
 
@@ -56,40 +56,3 @@ const uid = `fpt-${Math.random().toString(36).slice(2, 10)}`;
     });
   });
 </script>
-
-<style>
-  .floorplan-tabs {
-    margin: 1.5rem 0;
-  }
-
-  .tab-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(65, 54, 30, 0.15);
-  }
-
-  .tab-btn {
-    padding: 0.7em 1.4em;
-    border: none;
-    background: transparent;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--color-text);
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -1px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-
-  .tab-btn:hover {
-    color: var(--color-primary);
-  }
-
-  .tab-btn.is-active {
-    color: var(--color-primary);
-    border-bottom-color: var(--color-primary);
-  }
-</style>
