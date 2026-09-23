@@ -30,7 +30,7 @@ lead_form_title: Đăng ký tham quan nhà mẫu SOHO
 
 SOHO là phân khu nhà phố thương mại (shophouse) sôi động và sầm uất bậc nhất tại The Global City, toạ lạc ngay vị trí trung tâm của đại đô thị. Phân khu được thiết kế theo chuẩn mực quốc tế, hướng đến trở thành điểm đến mua sắm, ẩm thực và giải trí hàng đầu khu vực.
 
-<video class="intro-video" src="/videos/soho-thiet-ke-doc-dao.mp4" controls autoplay muted loop playsinline></video>
+<iframe class="video-embed" src="https://www.youtube-nocookie.com/embed/MgEyGXuJwok" title="SOHO - The Global City" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 
 ### 1. Quy mô và quy hoạch
 
