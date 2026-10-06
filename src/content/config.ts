@@ -19,6 +19,8 @@ const pageSchema = ({ image }: SchemaContext) =>
         z.object({
           image: image(),
           caption: z.string().optional(),
+          // Half-width: consecutive half items render side by side.
+          half: z.boolean().optional(),
         })
       )
       .optional(),
@@ -44,7 +46,7 @@ const pageSchema = ({ image }: SchemaContext) =>
           label: z.string(),
           // Defaults to the gallery's usual auto-fill grid; "grid-2" fixes
           // it at 2 columns (e.g. a small, evenly-weighted set of photos).
-          layout: z.enum(['grid', 'grid-2', 'grid-2-full', 'stacked']).optional(),
+          layout: z.enum(['grid', 'grid-2', 'stacked']).optional(),
           items: z.array(
             z.object({
               image: image(),

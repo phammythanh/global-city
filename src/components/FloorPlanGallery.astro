@@ -5,6 +5,9 @@ import type { ImageMetadata } from 'astro';
 interface GalleryItem {
   image: ImageMetadata;
   caption?: string;
+  /** In the stacked layout, show this item at half width so consecutive
+   * half items sit side by side (e.g. two towers' plans for one level). */
+  half?: boolean;
 }
 
 interface Props {
@@ -12,7 +15,7 @@ interface Props {
   /** "grid" (default) auto-fills small thumbnails; "grid-2"/"grid-3" fix
    * it at 2 or 3 columns; "stacked" shows each image full-width, one
    * below another. */
-  layout?: 'grid' | 'grid-2' | 'grid-2-full' | 'grid-3' | 'stacked';
+  layout?: 'grid' | 'grid-2' | 'grid-3' | 'stacked';
 }
 
 const { items, layout = 'grid' } = Astro.props;
@@ -32,8 +35,8 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
   class:list={[
     'floorplan-gallery',
     layout === 'stacked' && 'is-stacked',
-    (layout === 'grid-2' || layout === 'grid-2-full') && 'is-grid-2',
-    layout === 'grid-2-full' && 'is-full',
+    layout === 'grid-2' && 'is-grid-2',
+    layout === 'stacked' && items.some((item) => item.half) && 'has-half',
     layout === 'grid-3' && 'is-grid-3',
   ]}
   data-gallery-root={uid}
@@ -42,15 +45,15 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     items.map((item, i) => (
       <button
         type="button"
-        class="gallery-item"
+        class:list={['gallery-item', item.half && 'is-half']}
         data-index={i}
         data-full={fullImages[i].src}
         data-caption={item.caption ?? ''}
       >
-        {layout === 'stacked' ? (
-          <Image src={item.image} alt={item.caption ?? ''} width={1600} height={1000} />
-        ) : layout === 'grid-2-full' ? (
+        {item.half ? (
           <Image src={item.image} alt={item.caption ?? ''} width={900} />
+        ) : layout === 'stacked' ? (
+          <Image src={item.image} alt={item.caption ?? ''} width={1600} height={1000} />
         ) : (
           <Image src={item.image} alt={item.caption ?? ''} width={480} height={270} />
         )}
@@ -181,12 +184,26 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     border-radius: calc(var(--radius) - 4px);
   }
 
-  .floorplan-gallery.is-full .gallery-item :global(img) {
+  .floorplan-gallery.has-half {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .floorplan-gallery.has-half .gallery-item:not(.is-half) {
+    grid-column: 1 / -1;
+  }
+
+  .gallery-item.is-half :global(img) {
     width: 100%;
     height: auto;
   }
 
-  .floorplan-gallery:not(.is-stacked):not(.is-full) .gallery-item :global(img) {
+  @media (max-width: 560px) {
+    .floorplan-gallery.has-half {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .floorplan-gallery:not(.is-stacked) .gallery-item :global(img) {
     width: 100%;
     height: 200px;
     object-fit: cover;
