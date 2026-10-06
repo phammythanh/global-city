@@ -13,10 +13,14 @@ gallery:
     caption: Mặt bằng tầng 5
   - image: ./images/masteri-grand-view/mat-bang-tang-6.webp
     caption: Mặt bằng tầng 6
-  - image: ./images/masteri-grand-view/mat-bang-tang-7-14.webp
-    caption: Mặt bằng tầng 7 - 14
-  - image: ./images/masteri-grand-view/mat-bang-tang-15-20.webp
-    caption: Mặt bằng tầng 15 - 20
+  - image: ./images/masteri-grand-view/mat-bang-spark-tang-7-14.webp
+    caption: Tòa Spark - Mặt bằng tầng 7 - 14
+  - image: ./images/masteri-grand-view/mat-bang-glow-tang-7-14.webp
+    caption: Tòa Glow - Mặt bằng tầng 7 - 14
+  - image: ./images/masteri-grand-view/mat-bang-spark-tang-15-20.webp
+    caption: Tòa Spark - Mặt bằng tầng 15 - 20
+  - image: ./images/masteri-grand-view/mat-bang-glow-tang-15-20.webp
+    caption: Tòa Glow - Mặt bằng tầng 15 - 20
   - image: ./images/masteri-grand-view/mat-bang-tang-21.webp
     caption: Mặt bằng tầng 21
   - image: ./images/masteri-grand-view/mat-bang-tang-22.webp
