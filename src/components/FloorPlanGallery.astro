@@ -12,7 +12,7 @@ interface Props {
   /** "grid" (default) auto-fills small thumbnails; "grid-2"/"grid-3" fix
    * it at 2 or 3 columns; "stacked" shows each image full-width, one
    * below another. */
-  layout?: 'grid' | 'grid-2' | 'grid-3' | 'stacked';
+  layout?: 'grid' | 'grid-2' | 'grid-2-full' | 'grid-3' | 'stacked';
 }
 
 const { items, layout = 'grid' } = Astro.props;
@@ -32,7 +32,8 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
   class:list={[
     'floorplan-gallery',
     layout === 'stacked' && 'is-stacked',
-    layout === 'grid-2' && 'is-grid-2',
+    (layout === 'grid-2' || layout === 'grid-2-full') && 'is-grid-2',
+    layout === 'grid-2-full' && 'is-full',
     layout === 'grid-3' && 'is-grid-3',
   ]}
   data-gallery-root={uid}
@@ -48,6 +49,8 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
       >
         {layout === 'stacked' ? (
           <Image src={item.image} alt={item.caption ?? ''} width={1600} height={1000} />
+        ) : layout === 'grid-2-full' ? (
+          <Image src={item.image} alt={item.caption ?? ''} width={900} />
         ) : (
           <Image src={item.image} alt={item.caption ?? ''} width={480} height={270} />
         )}
@@ -178,7 +181,12 @@ const uid = `fpg-${Math.random().toString(36).slice(2, 10)}`;
     border-radius: calc(var(--radius) - 4px);
   }
 
-  .floorplan-gallery:not(.is-stacked) .gallery-item :global(img) {
+  .floorplan-gallery.is-full .gallery-item :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  .floorplan-gallery:not(.is-stacked):not(.is-full) .gallery-item :global(img) {
     width: 100%;
     height: 200px;
     object-fit: cover;
